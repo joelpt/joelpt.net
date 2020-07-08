@@ -1,0 +1,367 @@
+/* Constants */
+
+:root {
+    --border-space: 10px;
+    --hover-highlight-speed: 90ms;
+    --scheme-switch-speed: 300ms;
+}
+
+
+/* Font face */
+
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
+}
+
+
+/* General page formatting */
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
+/* Topmost containers */
+
+body {
+    height: 100vw;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#rotator {
+    height: 100vh;
+    width: 100vw;
+    transform-origin: 718px 501px;
+    transform: rotate(-30deg);
+}
+
+
+/* Init-time styling (used to calculate scaling factors in JS) */
+
+body:not(.init) {
+    transform-origin: top left;
+}
+
+body.init #menu {
+    width: 1px;
+}
+
+body.init #menu .header {
+    padding-left: 0px;
+}
+
+body.init #band5 {
+    display: none;
+}
+
+
+/* Color scheme application */
+
+body,
+#band1>td,
+#sample-band-1 {
+    background-color: var(--color-1);
+}
+
+body #band2>td,
+#sample-band-2 {
+    background-color: var(--color-2);
+}
+
+body #band3>td,
+#sample-band-3 {
+    background-color: var(--color-3);
+}
+
+body #band4>td,
+#sample-band-4 {
+    background-color: var(--color-4);
+}
+
+body #band5>td,
+#sample-band-5 {
+    background-color: var(--color-5);
+}
+
+body {
+    color: var(--color-text);
+}
+
+
+/* Color scheme defaults */
+
+body {
+    --color-text: #181818;
+}
+
+body .header {
+    padding-bottom: var(--border-space);
+}
+
+
+/* Color scheme 1 */
+
+body.scheme-1 {
+    --color-1: #d97b29;
+    --color-2: #f29f05;
+    --color-3: #f2dc6b;
+    --color-4: #7b8c3b;
+    --color-5: #f2f2f2;
+}
+
+
+/* Color scheme 2 */
+
+body.scheme-2 {
+    --color-1: #025159;
+    --color-2: #03A696;
+    --color-3: #F28705;
+    --color-4: #F25D27;
+    --color-5: #F20505;
+}
+
+body.scheme-2 tr:not(#band1) .header {
+    border-bottom: var(--border-space) solid black;
+    padding-bottom: 0px;
+}
+
+
+/* Color scheme 3 */
+
+body.scheme-3 {
+    --color-1: #D9C58B;
+    --color-2: #D9D4CC;
+    --color-3: #8C3D0F;
+    --color-4: #402617;
+    --color-5: #8C583A;
+}
+
+body.scheme-3 tr:not(#band1) .header {
+    border-bottom: var(--border-space) solid transparent;
+    padding-bottom: 0px;
+}
+
+
+/* Color scheme 4 */
+
+body.scheme-4 {
+    --color-1: darkorange;
+    --color-2: white;
+    --color-3: turquoise;
+    --color-4: white;
+    --color-5: darkorange;
+}
+
+
+/* Color scheme 5 */
+
+body.scheme-5 {
+    --color-1: darkred;
+    --color-2: white;
+    --color-3: black;
+    --color-4: white;
+    --color-5: black;
+}
+
+body.scheme-5 #band1,
+body.scheme-5 #band3 {
+    color: white;
+}
+
+body.scheme-5 #menu tr:hover .header-text {
+    text-shadow: -4px 0 0 black, -6px 0 0 white, -8px 0 0 white, -10px 0 0 white, -12px 0 0 black;
+}
+
+body.scheme-5 #band1 .bullets li:hover,
+body.scheme-5 #band3 .bullets li:hover {
+    text-decoration-color: white;
+}
+
+
+/* Menu and bands */
+
+#menu {
+    font-family: 'Bahnschrift Regular';
+    text-transform: uppercase;
+    margin-left: -9900px;
+    width: 20000px;
+}
+
+.header {
+    position: relative;
+    height: 200px;
+    width: 1px;
+    padding-top: 80px;
+    padding-left: 10000px;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 120px;
+}
+
+.ext {
+    position: relative;
+    transform: skew(0, 30deg);
+    transform-origin: top left;
+}
+
+.header,
+.ext {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
+}
+
+.header-text {
+    transition: text-shadow var(--hover-highlight-speed);
+}
+
+#menu tr:hover .header-text {
+    text-shadow: -6px 0vw 1vw rgba(255, 255, 255, 0.25), -6px 0vw rgba(255, 255, 255, 0.7), -6px 0vw rgba(255, 255, 255, 0.7), -7px 0vw rgba(128, 128, 128, 0.25);
+    cursor: pointer;
+    transition: text-shadow var(--hover-highlight-speed);
+}
+
+#band1.active-band:hover .header-text {
+    text-shadow: none;
+    cursor: default;
+}
+
+
+/* Band tweaks */
+
+#band1>td {
+    background-image: none;
+}
+
+#band1>td {
+    font-size: 160px;
+}
+
+#band2>td {
+    top: -3px;
+}
+
+#band3>td {
+    top: -4px;
+}
+
+#band4>td {
+    top: -5px;
+}
+
+#band5>td {
+    top: -6px;
+}
+
+#band5 {
+    height: 10000px;
+}
+
+.ext {
+    left: -2px;
+}
+
+
+/* Bullet lists */
+
+.bullets {
+    font-size: 40px;
+    display: none;
+}
+
+.bullets ul {
+    margin: 60px 0px;
+}
+
+.bullets li+li {
+    padding-top: 40px;
+}
+
+.bullets li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(37, 36, 36, 0.9);
+}
+
+#band3 .bullets {
+    height: 400px;
+}
+
+#band3 .bullets ul {
+    display: inline-block;
+    transform: rotate(90deg) translate(266px);
+    transform-origin: top right;
+}
+
+#band4 .bullets {
+    height: 600px;
+}
+
+#band4 .bullets ul {
+    display: inline-block;
+    text-align: left;
+    transform-origin: center;
+    transform: rotate(120deg) translateX(8vw);
+}
+
+
+/* Scheme switcher */
+
+#scheme-switcher {
+    position: absolute;
+    right: 50px;
+    bottom: 40px;
+    zoom: 0.5;
+    color: #F2F2F2;
+    opacity: 0.3;
+    transition: opacity 0.15s;
+}
+
+#scheme-switcher:hover {
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+#scheme-switcher * {
+    display: inline-block;
+    box-sizing: content-box;
+    cursor: default;
+    vertical-align: middle;
+}
+
+#left-scheme,
+#right-scheme {
+    text-shadow: 0px 1px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: 'Bahnschrift Regular';
+    font-size: 100px;
+    cursor: pointer;
+}
+
+#scheme-sample-box {
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0px 6px;
+}
+
+#scheme-sample {
+    transform: skew(0, 210deg) scaleY(1.75) translateY(-14px);
+    transform-origin: left;
+}
+
+#scheme-sample li {
+    height: 20px;
+    width: 100px;
+}
+
+
+/* Scheme transitions */
+
+body,
+#menu td {
+    transition: background-color calc(var(--scheme-switch-speed));
+}
