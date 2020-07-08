@@ -2,7 +2,7 @@
 
 :root {
     --border-space: 10px;
-    --hover-highlight-speed: 90ms;
+    --hover-highlight-speed: 40ms;
     --scheme-switch-speed: 300ms;
 }
 

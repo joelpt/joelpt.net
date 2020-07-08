@@ -6,7 +6,7 @@ const PAGE_ROTATION_EASING = 'swing';
 const BAND_ROTATION_DEGREES = [-30, 0, -90, -120];
 
 const TOTAL_COLOR_SCHEMES = 5;
-const COLOR_SCHEME_ORDER = [1, 3, 2, 4, 5];
+const COLOR_SCHEME_ORDER = [1, 3, 5, 2, 4];
 
 $(document).ready(() => {
     initializePage();
@@ -48,7 +48,6 @@ function handleBandEvents() {
     let currentRotationDegrees = BAND_ROTATION_DEGREES[0];
 
     $('#menu tr:not(#band5) td').on('click', onClickBand);
-
     return;
 
     /* Animate rotating the page to specified degrees */
