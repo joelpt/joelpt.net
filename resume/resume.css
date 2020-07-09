@@ -1,0 +1,8 @@
+/* Font face */
+
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
+}
