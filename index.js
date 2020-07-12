@@ -3,7 +3,6 @@ const BAND_SLIDE_SPEED_MS = 300;
 const PAGE_ROTATION_BASE_SPEED_MS = 100;
 const PAGE_ROTATION_ANGLE_SPEED_MULTIPLIER = 2;
 const PAGE_ROTATION_EASING = 'swing';
-const BAND_ROTATION_DEGREES = [-30, 0, -90, -120];
 
 const TOTAL_COLOR_SCHEMES = 5;
 const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
@@ -19,6 +18,9 @@ function initializePage() {
     // reset scroll position, needed due to possible funky cases with rotations/translates
     window.scroll(0, 0);
     setTimeout(() => window.scroll(0, 0), 100);
+
+    // set <a target="_blank"> on all <a>'s
+    $('a').attr('target', '_blank');
 
     // Keep the menu properly sized regardless of device/aspect ratio/dpi
     let menuHeight = $('#menu').height();
@@ -45,23 +47,11 @@ function initializePage() {
 /* Set up events to do rotation and resizes when the bands are clicked */
 function handleBandEvents() {
     let currentBandId = 'band1';
-    let currentRotationDegrees = BAND_ROTATION_DEGREES[0];
 
     $('#menu tr:not(#band5) td').on('click', onClickBand);
+    $('a').on('click', ev => ev.stopPropagation());
+
     return;
-
-    /* Animate rotating the page to specified degrees */
-    function rotatePage(degrees) {
-        if (currentRotationDegrees === degrees) return;
-
-        $({ deg: currentRotationDegrees }).animate({ deg: degrees }, {
-            duration: PAGE_ROTATION_BASE_SPEED_MS + PAGE_ROTATION_ANGLE_SPEED_MULTIPLIER * Math.abs(currentRotationDegrees - degrees),
-            easing: PAGE_ROTATION_EASING,
-            step: (now) => $('#rotator').css('transform', 'rotate(' + now + 'deg)')
-        });
-
-        currentRotationDegrees = degrees;
-    }
 
     /* Handle clicks within a band */
     function onClickBand(e) {
@@ -71,15 +61,8 @@ function handleBandEvents() {
         const targetBandId = $band.attr('id');
         currentBandId = (currentBandId === targetBandId) ? 'band1' : targetBandId; // re-clicking a band resets the page
 
-        if (currentBandId !== 'band1') {
-            $band.find('.bullets').slideDown(BAND_SLIDE_SPEED_MS);
-        }
-
-        $(`#menu tr:not(#${currentBandId}) .bullets`).slideUp(BAND_SLIDE_SPEED_MS);
-
-        rotatePage(BAND_ROTATION_DEGREES[parseInt(currentBandId.charAt(4)) - 1]);
-
-        $(`.active-band`).removeClass('active-band')
+        $('body').attr('data-active-band', currentBandId);
+        $(`.active-band`).removeClass('active-band');
         $(`#${currentBandId}`).addClass('active-band');
     }
 }

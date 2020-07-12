@@ -3,93 +3,8 @@
 :root {
     --border-space: 10px;
     --hover-highlight-speed: 40ms;
-    --scheme-switch-speed: 300ms;
-}
-
-
-/* Font face */
-
-@font-face {
-    font-family: 'Bahnschrift Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
-}
-
-
-/* General page formatting */
-
-a {
-    text-decoration: inherit;
-    color: inherit;
-}
-
-
-/* Topmost containers */
-
-body {
-    height: 100vw;
-    width: 100vw;
-    overflow: hidden;
-}
-
-#rotator {
-    height: 100vh;
-    width: 100vw;
-    transform-origin: 718px 501px;
-    transform: rotate(-30deg);
-}
-
-
-/* Init-time styling (used to calculate scaling factors in JS) */
-
-body:not(.init) {
-    transform-origin: top left;
-}
-
-body.init #menu {
-    width: 1px;
-}
-
-body.init #menu .header {
-    padding-left: 0px;
-}
-
-body.init #band5 {
-    display: none;
-}
-
-
-/* Color scheme application */
-
-body,
-#band1>td,
-#sample-band-1 {
-    background-color: var(--color-1);
-}
-
-body #band2>td,
-#sample-band-2 {
-    background-color: var(--color-2);
-}
-
-body #band3>td,
-#sample-band-3 {
-    background-color: var(--color-3);
-}
-
-body #band4>td,
-#sample-band-4 {
-    background-color: var(--color-4);
-}
-
-body #band5>td,
-#sample-band-5 {
-    background-color: var(--color-5);
-}
-
-body {
-    color: var(--color-text);
+    --drawer-animation-speed: 400ms;
+    --scheme-switch-speed: 400ms;
 }
 
 
@@ -183,11 +98,96 @@ body.scheme-5 #band3 .bullets li:hover {
 }
 
 
+/* Font face */
+
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
+}
+
+
+/* General page formatting */
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
+/* Topmost containers */
+
+body {
+    height: 100vw;
+    width: 100vw;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Bahnschrift Regular';
+    text-transform: uppercase;
+}
+
+#rotator {
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/* Init-time styling (used to calculate scaling factors in JS) */
+
+body:not(.init) {
+    transform-origin: top left;
+}
+
+body.init #menu {
+    width: 1px;
+}
+
+body.init #menu .header {
+    padding-left: 0px;
+}
+
+body.init #band5 {
+    display: none;
+}
+
+
+/* Color scheme application */
+
+body,
+#band1>td,
+#sample-band-1 {
+    background-color: var(--color-1);
+}
+
+body #band2>td,
+#sample-band-2 {
+    background-color: var(--color-2);
+}
+
+body #band3>td,
+#sample-band-3 {
+    background-color: var(--color-3);
+}
+
+body #band4>td,
+#sample-band-4 {
+    background-color: var(--color-4);
+}
+
+body #band5>td,
+#sample-band-5 {
+    background-color: var(--color-5);
+}
+
+body {
+    color: var(--color-text);
+}
+
+
 /* Menu and bands */
 
 #menu {
-    font-family: 'Bahnschrift Regular';
-    text-transform: uppercase;
     margin-left: -9900px;
     width: 20000px;
 }
@@ -269,7 +269,9 @@ body.scheme-5 #band3 .bullets li:hover {
 
 .bullets {
     font-size: 40px;
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    display: block;
 }
 
 .bullets ul {
@@ -286,25 +288,17 @@ body.scheme-5 #band3 .bullets li:hover {
     text-decoration-color: rgba(37, 36, 36, 0.9);
 }
 
-#band3 .bullets {
-    height: 400px;
-}
-
 #band3 .bullets ul {
     display: inline-block;
-    transform: rotate(90deg) translate(266px);
     transform-origin: top right;
-}
-
-#band4 .bullets {
-    height: 600px;
+    font-size: 105%;
 }
 
 #band4 .bullets ul {
     display: inline-block;
     text-align: left;
+    font-size: 110%;
     transform-origin: center;
-    transform: rotate(120deg) translateX(8vw);
 }
 
 
@@ -315,7 +309,6 @@ body.scheme-5 #band3 .bullets li:hover {
     right: 50px;
     bottom: 40px;
     zoom: 0.5;
-    color: #F2F2F2;
     opacity: 0.3;
     transition: opacity 0.15s;
 }
@@ -334,9 +327,9 @@ body.scheme-5 #band3 .bullets li:hover {
 
 #left-scheme,
 #right-scheme {
-    text-shadow: 0px 1px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    font-family: 'Bahnschrift Regular';
-    font-size: 100px;
+    text-shadow: 0px 1px 0px #f2f2f2, -1px -1px 0 #f2f2f2, 1px -1px 0 #f2f2f2, -1px 1px 0 #f2f2f2, 1px 1px 0 #f2f2f2;
+    font-size: 160px;
+    color: rgba(0, 0, 0, 0.95);
     cursor: pointer;
 }
 
@@ -364,4 +357,42 @@ body.scheme-5 #band3 .bullets li:hover {
 body,
 #menu td {
     transition: background-color calc(var(--scheme-switch-speed));
+}
+
+
+/* Animation: page rotation */
+
+#rotator {
+    transform-origin: 718px 501px;
+    transition-duration: var(--drawer-animation-speed);
+    transition-property: transform;
+}
+
+body[data-active-band=band1] #rotator {
+    transform: translate(0px, 0px) scale(1.0) rotate(-30deg);
+}
+
+body[data-active-band=band2] #rotator {
+    transform: translate(0px, 0px) scale(1.0) rotate(0deg);
+}
+
+body[data-active-band=band3] #rotator {
+    transform: translate(0px, -175px) scale(0.95) rotate(0deg);
+}
+
+body[data-active-band=band4] #rotator {
+    transform: translate(0px, -225px) scale(0.9) rotate(0deg);
+}
+
+
+/* Animation: sliding band drawers */
+
+.bullets {
+    transition-duration: var(--drawer-animation-speed);
+    transition-property: max-height;
+}
+
+tr.active-band .bullets {
+    max-height: 200px;
+    transition-duration: var(--drawer-animation-speed);
 }
