@@ -50,8 +50,8 @@ body {
 
 #rotator {
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: visible;
 }
 
@@ -323,7 +323,7 @@ body {
     position: absolute;
     right: 50px;
     bottom: 40px;
-    zoom: 0.5;
+    zoom: 0.75;
     opacity: 0.6;
     transition: opacity 0.15s;
 }

@@ -36,13 +36,13 @@ function initializePage() {
     }
 
     $(window).on('resize', adjustZoom);
-    setTimeout(adjustZoom, 100); // for iOS
 
     // remove the .init class so we actually render everything we want the user to see
     $('body').removeClass('init');
 
     adjustZoom();
-    setTimeout(adjustZoom(), 0); // failsafe
+    setTimeout(adjustZoom, 0); // failsafe
+    setTimeout(adjustZoom, 100); // for iOS
 }
 
 /* Set up events to do rotation and resizes when the bands are clicked */
