@@ -6,7 +6,7 @@
     --hover-highlight-speed: 40ms;
     --drawer-animation-speed: 500ms;
     --scheme-switch-speed: 400ms;
-    --drawer-magnification-factor: 0.025;
+    --drawer-magnification-factor: 0.05;
 }
 
 
@@ -283,7 +283,7 @@ body {
 /* Bullet lists */
 
 .bullets {
-    font-size: 50px;
+    font-size: 60px;
     max-height: 0;
     overflow: hidden;
     display: block;
@@ -320,17 +320,17 @@ body {
 /* Scheme switcher */
 
 #scheme-switcher {
-    position: absolute;
-    right: 50px;
-    bottom: 40px;
-    zoom: 0.75;
+    position: fixed;
+    right: 4vw;
+    bottom: 4vw;
+    zoom: 0.8;
     opacity: 0.6;
     transition: opacity 0.15s;
 }
 
 #scheme-switcher:hover {
     opacity: 1;
-    transition: opacity 0.1s;
+    transition: opacity 0.15s;
 }
 
 #scheme-switcher * {
@@ -343,27 +343,27 @@ body {
 #left-scheme,
 #right-scheme {
     text-shadow: 0px 1px 0px #f2f2f2, -1px -1px 0 #f2f2f2, 1px -1px 0 #f2f2f2, -1px 1px 0 #f2f2f2, 1px 1px 0 #f2f2f2;
-    font-size: 160px;
+    font-size: 10vw;
     color: rgba(0, 0, 0, 0.95);
     cursor: pointer;
 }
 
 #scheme-sample-box {
     border: 2px solid black;
-    width: 100px;
-    height: 100px;
+    width: 10vw;
+    height: 10vw;
     overflow: hidden;
     margin: 0px 6px;
 }
 
 #scheme-sample {
-    transform: skew(0, 210deg) scaleY(1.75) translateY(-14px);
+    transform: skew(0, 210deg) scaleY(1.75) translateY(-1.5vw);
     transform-origin: left;
 }
 
 #scheme-sample li {
-    height: 20px;
-    width: 100px;
+    height: 2vw;
+    width: 10vw;
 }
 
 
