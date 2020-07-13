@@ -33,19 +33,23 @@ a {
 html,
 body {
     overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
-    max-height: 100vh;
-    max-width: 100vw;
     user-select: none;
     font-family: 'Bahnschrift Regular';
     text-transform: uppercase;
 }
 
 #rotator {
+    position: relative;
     height: 100vh;
     width: 100vw;
     overflow: visible;
