@@ -8,6 +8,61 @@
 }
 
 
+/* Font face */
+
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
+}
+
+
+/* General page formatting */
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
+/* Topmost containers */
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Bahnschrift Regular';
+    text-transform: uppercase;
+}
+
+#rotator {
+    height: 100vh;
+    width: 100vw;
+    overflow: visible;
+}
+
+
+/* Init-time styling (used to calculate scaling factors in JS) */
+
+body:not(.init) {
+    transform-origin: top left;
+}
+
+body.init #menu {
+    width: 1px;
+}
+
+body.init #menu .header {
+    padding-left: 0px;
+}
+
+body.init #band5 {
+    display: none;
+}
+
+
 /* Color scheme defaults */
 
 body {
@@ -95,60 +150,6 @@ body.scheme-5 #menu tr:hover .header-text {
 body.scheme-5 #band1 .bullets li:hover,
 body.scheme-5 #band3 .bullets li:hover {
     text-decoration-color: white;
-}
-
-
-/* Font face */
-
-@font-face {
-    font-family: 'Bahnschrift Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Bahnschrift Regular'), url('res/BAHNSCHRIFT 1.woff') format('woff');
-}
-
-
-/* General page formatting */
-
-a {
-    text-decoration: inherit;
-    color: inherit;
-}
-
-
-/* Topmost containers */
-
-body {
-    height: 100vw;
-    width: 100vw;
-    overflow: hidden;
-    user-select: none;
-    font-family: 'Bahnschrift Regular';
-    text-transform: uppercase;
-}
-
-#rotator {
-    height: 100vh;
-    width: 100vw;
-}
-
-
-/* Init-time styling (used to calculate scaling factors in JS) */
-
-body:not(.init) {
-    transform-origin: top left;
-}
-
-body.init #menu {
-    width: 1px;
-}
-
-body.init #menu .header {
-    padding-left: 0px;
-}
-
-body.init #band5 {
-    display: none;
 }
 
 
