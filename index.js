@@ -4,6 +4,10 @@ const PAGE_ROTATION_BASE_SPEED_MS = 100;
 const PAGE_ROTATION_ANGLE_SPEED_MULTIPLIER = 2;
 const PAGE_ROTATION_EASING = 'swing';
 
+
+const SMART_ZOOM_HEIGHT_FILL_PERCENT = 1;
+const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.75;
+
 const TOTAL_COLOR_SCHEMES = 5;
 const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
 
@@ -27,12 +31,12 @@ function initializePage() {
     let menuWidth = $('#menu').width();
 
     function adjustZoom() {
-        let optimalZoomBasedOnHeight = 0.85 * window.innerHeight / menuHeight;
-        let optimalZoomBasedOnWidth = 0.7 * window.innerWidth / menuWidth;
+        let optimalZoomBasedOnHeight = SMART_ZOOM_HEIGHT_FILL_PERCENT * window.innerHeight / menuHeight;
+        let optimalZoomBasedOnWidth = SMART_ZOOM_WIDTH_FILL_PERCENT * window.innerWidth / menuWidth;
 
         // Zoom to the lesser of the two, to ensure that the entire table is visible
         // both horizontally and vertically regardless of the display's dimensions
-        $('body').css('zoom', Math.min(optimalZoomBasedOnHeight, optimalZoomBasedOnWidth));
+        $('#zoomer').css('zoom', Math.min(optimalZoomBasedOnHeight, optimalZoomBasedOnWidth));
     }
 
     $(window).on('resize', adjustZoom);
