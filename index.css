@@ -218,8 +218,8 @@ body {
 
 .ext {
     position: relative;
-    transform: skew(0, 30deg);
-    transform-origin: top left;
+    /* transform: skew(0, 30deg); */
+    /* transform-origin: top left; */
     width: 10000px;
 }
 
