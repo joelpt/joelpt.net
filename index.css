@@ -1,10 +1,12 @@
 /* Constants */
 
 :root {
-    --border-space: 10px;
+    --drawer-open-extra-height: 300px;
+    --border-space-allowance: 10px;
     --hover-highlight-speed: 40ms;
-    --drawer-animation-speed: 400ms;
+    --drawer-animation-speed: 500ms;
     --scheme-switch-speed: 400ms;
+    --drawer-magnification-factor: 0.025;
 }
 
 
@@ -70,7 +72,7 @@ body {
 }
 
 body .header {
-    padding-bottom: var(--border-space);
+    padding-bottom: var(--border-space-allowance);
 }
 
 
@@ -96,7 +98,7 @@ body.scheme-2 {
 }
 
 body.scheme-2 tr:not(#band1) .header {
-    border-bottom: var(--border-space) solid black;
+    border-bottom: var(--border-space-allowance) solid black;
     padding-bottom: 0px;
 }
 
@@ -112,7 +114,7 @@ body.scheme-3 {
 }
 
 body.scheme-3 tr:not(#band1) .header {
-    border-bottom: var(--border-space) solid transparent;
+    border-bottom: var(--border-space-allowance) solid transparent;
     padding-bottom: 0px;
 }
 
@@ -195,13 +197,13 @@ body {
 
 .header {
     position: relative;
-    height: 200px;
+    height: 240px;
     width: 1px;
-    padding-top: 80px;
+    padding-top: 120px;
     padding-left: 10000px;
     padding-right: 20px;
     text-align: right;
-    font-size: 120px;
+    font-size: 125px;
 }
 
 .ext {
@@ -269,7 +271,7 @@ body {
 /* Bullet lists */
 
 .bullets {
-    font-size: 40px;
+    font-size: 50px;
     max-height: 0;
     overflow: hidden;
     display: block;
@@ -310,7 +312,7 @@ body {
     right: 50px;
     bottom: 40px;
     zoom: 0.5;
-    opacity: 0.3;
+    opacity: 0.6;
     transition: opacity 0.15s;
 }
 
@@ -374,15 +376,15 @@ body[data-active-band=band1] #rotator {
 }
 
 body[data-active-band=band2] #rotator {
-    transform: translate(0px, 0px) scale(1.0) rotate(0deg);
+    transform: translate(0px, 0px) scale(calc(1.0 + 1 * var(--drawer-magnification-factor))) rotate(0deg);
 }
 
 body[data-active-band=band3] #rotator {
-    transform: translate(0px, -175px) scale(0.95) rotate(0deg);
+    transform: translate(0px, -175px) scale(calc(1.0 - 1 * var(--drawer-magnification-factor))) rotate(0deg);
 }
 
 body[data-active-band=band4] #rotator {
-    transform: translate(0px, -225px) scale(0.9) rotate(0deg);
+    transform: translate(0px, -225px) scale(calc(1.0 - 2 * var(--drawer-magnification-factor))) rotate(0deg);
 }
 
 
@@ -394,6 +396,6 @@ body[data-active-band=band4] #rotator {
 }
 
 tr.active-band .bullets {
-    max-height: 200px;
+    max-height: var(--drawer-open-extra-height);
     transition-duration: var(--drawer-animation-speed);
 }
