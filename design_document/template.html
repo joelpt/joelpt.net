@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="origin">
+
+    <title>Design Document Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .edit_section {
+            display: none !important;
+        }
+        
+        .infomessage {
+            margin-top: 2em;
+        }
+        
+        #xwikicontent h1 {
+            margin-top: 2em !important;
+        }
+        
+        .wikiexternallink {
+            padding-right: 0 !important;
+            font-weight: bold;
+        }
+    </style>
+
+    <link href="./res/drawer.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="./res/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="./res/print.css" rel="stylesheet" type="text/css" media="print">
+    <!--[if IE]>
+  <link href="/bin/skin/skins/flamingo/ie-all.css?skin=XWiki.DefaultSkin&#38;colorTheme=xwiki%3AFlamingoThemes.Charcoal" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="./res/xwiki-min.css">
+    <link rel="stylesheet" type="text/css" href="./res/notification.css">
+    <link rel="stylesheet" type="text/css" href="./res/searchSuggest.css">
+    <link rel="stylesheet" type="text/css" href="./res/suggestPicker.css">
+    <link rel="stylesheet" type="text/css" href="./res/userPicker.css">
+    <link rel="stylesheet" type="text/css" href="./res/tags.css">
+    <link rel="stylesheet" type="text/css" href="./res/comments.css">
+    <link rel="stylesheet" type="text/css" href="./res/upload.css">
+    <link rel="stylesheet" type="text/css" href="./res/attachments.css">
+    <link rel="stylesheet" type="text/css" href="./res/pagination.css">
+    <link rel="stylesheet" type="text/css" href="./res/Style">
+    <link rel="stylesheet" type="text/css" href="./res/WebHome">
+    <link rel="stylesheet" type="text/css" href="./res/Settings">
+    <link rel="stylesheet" type="text/css" href="./res/FontAwesome">
+    <link rel="stylesheet" type="text/css" href="./res/SharePage">
+
+</head>
+
+<body id="body" class="mediawiki skin-flamingo wiki-xwiki space-KnowledgeTech.Collaboration.Design.Design_document_template viewbody hidelefthideright  panel-left-width-Small panel-right-width-Medium drawer drawer-right drawer-close">
+    <div id="MathJax_Message" style="display: none;"></div>
+    <div id="MathJax_Message" style="display: none;"></div>
+    <div id="xwikimaincontainer">
+        <div id="xwikimaincontainerinner">
+
+            <div id="menuview">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <nav class="navbar navbar-default actionmenu" role="navigation">
+                    <!-- <div class="container-fluid"><a style="display: inline-block; margin-top: 12px; font-size: 120%; font-weight: bold; color: white;" href="/">&lt; Back to joelpt.net</a></div> -->
+                </nav>
+            </div>
+            <div class="contenthidelefthideright" id="contentcontainer">
+                <div id="contentcontainerinner">
+                    <div class="leftsidecolumns">
+                        <div id="contentcolumn">
+                            <div class="main">
+                                <div id="mainContentArea">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="xcontent">
+
+
+                                        <div class="row document-header">
+                                            <div class="document-info col-xs-12 col-md-7">
+                                                <div id="document-title">
+                                                    <h1 style="
+ 
+">[EXAMPLE] Design Document Template</h1>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="box infomessage" style="font-size: 120%;">Also see my <span class="wikiexternallink"><a href="./guide.html">Design Process Guide</a></span>. By Joel Thornton.</div>
+
+                                        <div class="row">
+                                            <div id="" class="col-xs-12">
+                                                <div class="box infomessage">Depending on the scale of your design, you may not need every single section in this design document template. Feel free to pick and choose what makes the most sense for your particular design, and add sections
+                                                    as appropriate. In general, this template represents important things to think about.</div>
+                                                <div class="amazon-wiki-toc amazon-wiki-toc-numbered">
+                                                    <ol><span class="wikilink"><a href="#HOverview"><li>1 Overview</li></a></span>
+                                                        <ol><span class="wikilink"><a href="#HWhoisthecustomer3F"><li>1.1 Who is the customer?</li></a></span><span class="wikilink"><a href="#HKeyobjectives"><li>1.2 Key objectives</li></a></span></ol>
+                                                        <span class="wikilink">
+                                                            <a href="#HRequirements">
+                                                                <li>2 Requirements</li>
+                                                            </a>
+                                                            </span>
+                                                        <ol><span class="wikilink"><a href="#HGlossary"><li>2.1 Glossary</li></a></span><span class="wikilink"><a href="#HUserstories"><li>2.2 User stories</li></a></span><span class="wikilink"><a href="#HOutofscope"><li>2.3 Out of scope</li></a></span>
+                                                            <span class="wikilink">
+                                                                    <a href="#HSuccessmetrics">
+                                                                        <li>2.4 Success metrics</li>
+                                                                    </a>
+                                                                    </span><span class="wikilink"><a href="#HSecurityclassification"><li>2.5 Security classification</li></a></span><span class="wikilink"><a href="#HAssumptions"><li>2.6 Assumptions</li></a></span>
+                                                            <span class="wikilink">
+                                                                        <a href="#HRisks">
+                                                                            <li>2.7 Risks</li>
+                                                                        </a>
+                                                                        </span><span class="wikilink"><a href="#HCaveats"><li>2.8 Caveats</li></a></span></ol><span class="wikilink"><a href="#HDesignsummary"><li>3 Design summary</li></a></span>
+                                                        <ol><span class="wikilink"><a href="#HExpectedscale"><li>3.1 Expected scale</li></a></span><span class="wikilink"><a href="#HExpectedlifetime"><li>3.2 Expected lifetime</li></a></span><span class="wikilink"><a href="#HExpectedcosts"><li>3.3 Expected costs</li></a></span>
+                                                            <span class="wikilink">
+                                                                    <a href="#HDesignconstraints">
+                                                                        <li>3.4 Design constraints</li>
+                                                                    </a>
+                                                                    </span><span class="wikilink"><a href="#HDivisionofresponsibilities"><li>3.5 Division of responsibilities</li></a></span>
+                                                            <span class="wikilink">
+                                                                <a href="#HTechnologychoices">
+                                                                    <li>3.6 Technology choices</li>
+                                                                </a>
+                                                                </span>
+                                                            <span class="wikilink">
+                                                                        <a href="#HFailurecases">
+                                                                            <li>3.7 Failure cases</li>
+                                                                        </a>
+                                                                        </span><span class="wikilink"><a href="#HCompatibility"><li>3.8 Compatibility</li></a></span><span class="wikilink"><a href="#HDiagrams"><li>3.9 Diagrams</li></a></span>
+                                                            <span class="wikilink">
+                                                                    <a href="#HDesignrationales">
+                                                                        <li>3.10 Design rationales</li>
+                                                                    </a>
+                                                                    </span>
+                                                            <span class="wikilink">
+                                                                            <a href="#HMetrics">
+                                                                                <li>3.11 Metrics</li>
+                                                                            </a>
+                                                                            </span><span class="wikilink"><a href="#HAlarms"><li>3.12 Alarms</li></a></span><span class="wikilink"><a href="#HRelease"><li>3.13 Release</li></a></span>
+                                                            <span class="wikilink">
+                                                                        <a href="#HMaintenance">
+                                                                            <li>3.14 Maintenance</li>
+                                                                        </a>
+                                                                        </span>
+                                                            <span class="wikilink">
+                                                                                <a href="#HRejecteddesigns">
+                                                                                    <li>3.15 Rejected designs</li>
+                                                                                </a>
+                                                                                </span><span class="wikilink"><a href="#HOpenquestions"><li>3.16 Open questions</li></a></span></ol>
+                                                        <span class="wikilink">
+                                                            <a href="#HImplementationplan">
+                                                                <li>4 Implementation plan</li>
+                                                            </a>
+                                                            </span>
+                                                        <ol><span class="wikilink"><a href="#HDeliverables"><li>4.1 Deliverables</li></a></span><span class="wikilink"><a href="#HFollowupwork"><li>4.2 Followup work</li></a></span></ol><span class="wikilink"><a href="#HRevisionHistory"><li>5 Revision History</li></a></span></ol>
+                                                </div>
+                                                <h1 id="HOverview"><span class="toc-number">1 </span><span>Overview</span></h1>
+
+                                                <div class="box infomessage">Write your high level "executive summary" here. Explain what problem you're trying to solve, why you are trying to solve it, and who your target customers are. Leverage the <span class="wikilink"><a href="https://w.amazon.com/bin/view/SMART_Design_Requirements/">SMART model</a></span>                                                    in formulating this. You may also want to talk about how this design helps achieve the team's long term vision.</div>
+                                                <p>Users have expressed widespread interest in being able to author documents in the wiki using Markdown syntax, which is widely used and easy to use for non-technical as well as technical users. This design
+                                                    details the work required to support authoring and viewing wiki documents written in Markdown syntax.</p>
+                                                <h2 id="HWhoisthecustomer3F"><span class="toc-number">1.1 </span><span>Who is the customer?</span></h2>
+
+                                                <div class="box infomessage">Document in a sentence or two who your customer is.</div>
+                                                <h2 id="HKeyobjectives"><span class="toc-number">1.2 </span><span>Key objectives</span></h2>
+
+                                                <div class="box infomessage">Write your key objectives here. These are the high level "cardinal points" that outline the problem that needs to be solved. These objectives should drive further discussion as you drill down into the requirements,
+                                                    design, and implementation work.</div>
+                                                <ul>
+                                                    <li>Pages should be authorable using standard Markdown syntax.</li>
+                                                    <li>Non-technical users should be able to author pages using a WYSIWYG editor which generates Markdown.</li>
+                                                    <li>All pages authored with Markdown should be rendered correctly when viewed.</li>
+                                                </ul>
+                                                <h1 id="HRequirements"><span class="toc-number">2 </span><span>Requirements</span></h1>
+
+                                                <h2 id="HGlossary"><span class="toc-number">2.1 </span><span>Glossary</span></h2>
+
+                                                <div class="box infomessage">Outline any terms that your audience needs to know to know this document, but may not already understand. This includes terms created in the course of this design.</div>
+                                                <dl><dt>word 1</dt>
+                                                    <dd>definition 1</dd>
+                                                </dl>
+                                                <dl><dt>word 2</dt>
+                                                    <dd>definition 2</dd>
+                                                </dl>
+                                                <h2 id="HUserstories"><span class="toc-number">2.2 </span><span>User stories</span></h2>
+
+                                                <div class="box infomessage">Provide a list of requirements using User Story language. Each requirement should include an indication of its priority. P0 = Must Have. P1 = Should Have. P2 = Nice to Have. (Lower priority items should
+                                                    be in 'Out of scope' section.)</div>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="col">&nbsp;Priority&nbsp;</th>
+                                                            <th scope="col">&nbsp;Requirement</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>P0</td>
+                                                            <td>As a reader, I want to be able to read pages rendered from Markdown syntax, so that I can view pages which have been written in Markdown.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>P0</td>
+                                                            <td>As a technical author, I want to be able to author pages in Markdown using the source editor, so that I can quickly write documents in native Markdown syntax.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>P1</td>
+                                                            <td>As a non-technical author, I want to be able to author pages in Markdown using the WYSIWYG editor, so that I can quickly write documents without any knowledge of Markdown syntax.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>P2</td>
+                                                            <td>As an author, I want to be able to add custom CSS styling into my Markdown-based pages, so that I can customize and beautify the styling of my documents.</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h2 id="HOutofscope"><span class="toc-number">2.3 </span><span>Out of scope</span></h2>
+
+                                                <div class="box infomessage">Call out any requirements that are explicitly not part of this design, but which a stakeholder might assume to be included in the design. Doing this helps clarify and constrain the design.</div>
+                                                <ul>
+                                                    <li>More advanced Markdown features such as the Markdown Extended Syntax</li>
+                                                </ul>
+                                                <h2 id="HSuccessmetrics"><span class="toc-number">2.4 </span><span>Success metrics</span></h2>
+
+                                                <div class="box infomessage">How do we determine when the implementation is finished and correct? Define the success criteria in terms of quantifiable metrics that relate back to the key objectives, and mention how we'll collect those
+                                                    metrics. Refer to the <span class="wikiexternallink"><a href="https://w.amazon.com:8443/bin/view/SMART_Design_Requirements">SMART criteria</a></span> for guidance here.</div>
+                                                <ul>
+                                                    <li>At least 100 pages have been created using Markdown syntax one month after release. These metrics will be gathered from a SQL query against the Prod DB.</li>
+                                                    <li>At least 1000 page views have occurred on Markdown pages one month after release. These metrics will be gathered from a SQL query against the Prod DB.</li>
+                                                </ul>
+                                                <h2 id="HSecurityclassification"><span class="toc-number">2.5 </span><span>Security classification</span></h2>
+
+                                                <div class="box infomessage">What is the expected security classification of the data that the implementation will be working with?</div>
+                                                <h2 id="HAssumptions"><span class="toc-number">2.6 </span><span>Assumptions</span></h2>
+
+                                                <div class="box infomessage">Call out any assumptions being made in this design which play a significant role in how the requirements have been defined, or how the implementation will be carried out. It's important to identify these
+                                                    because they will often become a point of discussion during reviews and can help flesh out the implementation details. These may also be red flags that justify doing some prototype work up front before
+                                                    moving into the implementation design phase.</div>
+                                                <ul>
+                                                    <li>A readily available Markdown renderer is available to be incorporated in the wiki platform.</li>
+                                                </ul>
+                                                <h2 id="HRisks"><span class="toc-number">2.7 </span><span>Risks</span></h2>
+
+                                                <div class="box infomessage">Identify any known or potential risks with the intended design.</div>
+                                                <h2 id="HCaveats"><span class="toc-number">2.8 </span><span>Caveats</span></h2>
+
+                                                <div class="box infomessage">Call out any warnings, limitations, or other caveats pertinent to the design. It's important to be clear about the issues that the design cannot solve, or additional complications that it may introduce outside
+                                                    of the direct domain of the design's implementation.</div>
+                                                <h1 id="HDesignsummary"><span class="toc-number">3 </span><span>Design summary</span></h1>
+
+                                                <div class="box infomessage">Present a high level description of the intended design. This can be a BIG section of the document! Feel free to get as detailed as needed here. Add or remove subsections as appropriate below.</div>
+                                                <h2 id="HExpectedscale"><span class="toc-number">3.1 </span><span>Expected scale</span></h2>
+
+                                                <div class="box infomessage">What is the scale that the implementation is expected to support? Consider describing this in terms of transactions per second (TPS). Be sure to discuss projected growth rates here.</div>
+                                                <h2 id="HExpectedlifetime"><span class="toc-number">3.2 </span><span>Expected lifetime</span></h2>
+
+                                                <div class="box infomessage">How long is the implementation expected to live for? Oftentimes this will be "indefinitely", but call out any assumptions about this here.</div>
+                                                <h2 id="HExpectedcosts"><span class="toc-number">3.3 </span><span>Expected costs</span></h2>
+
+                                                <div class="box infomessage">If there any significant new up-front or ongoing financial costs implied by the implementation, call those out here. For example, will it be necessary to stand up a new fleet or datastore, or scale up an
+                                                    existing one to handle an additional load imposed by the new implementation?</div>
+                                                <h2 id="HDesignconstraints"><span class="toc-number">3.4 </span><span>Design constraints</span></h2>
+
+                                                <div class="box infomessage">Are there any constraints on the shape that the design/implementation must take that aren't directly described by the requirements? For example, does the implementation need to be constrained to a certain
+                                                    part of the codebase? Does the data need to live in a certain part of the system? Are there existing workflows or subsystems that need to be integrated with? Are there legal restrictions?&nbsp;</div>
+                                                <h2 id="HDivisionofresponsibilities"><span class="toc-number">3.5 </span><span>Division of responsibilities</span></h2>
+
+                                                <div class="box infomessage">When multiple teams will be collaborating on the implementation effort, we should clearly delineate who is responsible for which aspects of the work.<br>Add those details here, and/or if it makes sense,
+                                                    add a "Responsible party" column to the Requirements table.</div>
+                                                <h2 id="HTechnologychoices"><span class="toc-number">3.6 </span><span>Technology choices</span></h2>
+
+                                                <div class="box infomessage">What tool(s) did we decide to use? For each tool, is there a specific version we should be using? Why or why not? Did you consider future support/EOL products? What alternative choices did we consider, and
+                                                    why did we reject them?</div>
+                                                <h2 id="HFailurecases"><span class="toc-number">3.7 </span><span>Failure cases</span></h2>
+
+                                                <div class="box infomessage">How will different possible failure cases be accounted for? Think about: dependent service outages, fleet outages, deployment failures, data synchronization issues, system bottlenecks, authentication failures
+                                                    (e.g. no Kerberos token), authorization failures (e.g. permission denied messages). In each failure case, consider how the customer experience will be managed. Also consider how the team can recover
+                                                    from failure scenarios and what work may be needed to meet team SLAs.</div>
+                                                <h2 id="HCompatibility"><span class="toc-number">3.8 </span><span>Compatibility</span></h2>
+
+                                                <div class="box infomessage">
+                                                    <p>Not every design will have compatibility-related issues to account for, but think about the potential for such issues and detail them here:</p>
+                                                    <ul>
+                                                        <li>What is needed to ensure backwards compatibility and prevent compatibility breakages? For example, if are we changing the interface of some existing component, how do we ensure this won't break existing
+                                                            usages of the component?</li>
+                                                        <li>How does the design ensure forwards compatibility? For example, if the design exposes a JSON REST API, does it make sense to have a version-number in the JSON payload?</li>
+                                                        <li>Is any additional work needed to ensure continued compatibility with some external dependencies? For example, does the design depend on a service whose interface is expected to change in the near
+                                                            future?
+                                                        </li>
+                                                        <li>Are we changing the user interface/experience in some way that may confuse our customers, or violate their current expectations? For example, if the design dramatically changes a common user workflow,
+                                                            how are we accounting for that from the customer's perspective?</li>
+                                                    </ul>
+                                                </div>
+                                                <h2 id="HDiagrams"><span class="toc-number" style="color: inherit; font-family: inherit;">3.9 </span><span style="color: inherit; font-family: inherit;">Diagrams</span><br></h2>
+
+                                                <div class="box infomessage">
+                                                    <p>Include diagrams covering client interactions, downstream service interactions, complicated internal calculations/architectures, and anything else that helps a reader understand how the pieces will fit
+                                                        together and how work/data will flow through the system.</p>
+                                                </div>
+                                                <h2 id="HDesignrationales"><span class="toc-number">3.10 </span><span>Design rationales</span></h2>
+
+                                                <div class="box infomessage">Discuss the reasons behind why this particular design was chosen to satisfy the requirements. Why are we doing it this way? If there is another solution that might seem more obvious, why didn't we use that
+                                                    approach?
+                                                </div>
+                                                <h2 id="HMetrics"><span class="toc-number">3.11 </span><span>Metrics</span></h2>
+
+                                                <div class="box infomessage">For many designs, it won't make sense to itemize specific metrics until implementation time. Just call out key metrics from the perspective of the design/requirements here.</div>
+                                                <h2 id="HAlarms"><span class="toc-number">3.12 </span><span>Alarms</span></h2>
+
+                                                <div class="box infomessage">For many designs, it won't make sense to itemize specific alarms until implementation time. Just call out key alarms from the perspective of the design/requirements here.</div>
+                                                <h2 id="HRelease"><span class="toc-number">3.13 </span><span>Release</span></h2>
+
+                                                <div class="box infomessage">
+                                                    <p>Noteworthy specifics about the release process: deployment particulars, obtaining needed approvals, pre-mortem, gameday, user acceptance testing, alpha/beta/gamma testing, dashboarding work, runbook
+                                                        updates, etc.</p>
+                                                    <p><strong>Please call out what the requirements are for release.</strong> For example:</p>
+                                                    <ol>
+                                                        <li>How are we communicating the release to customers? (FAQ/Email/...)</li>
+                                                        <li>How much customer pushback/interaction do we expect to see?
+                                                            <ol>
+                                                                <li>Do we have a stance to respond to our customers?</li>
+                                                            </ol>
+                                                        </li>
+                                                        <li>Is there any work required on our end (either on-call or team)?</li>
+                                                        <li>Can/should this work be automated?</li>
+                                                        <li>Do we need a canned response?</li>
+                                                        <li>Are there any exception/edge cases that we need to respond differently to?</li>
+                                                    </ol>
+                                                </div>
+                                                <h2 id="HMaintenance"><span class="toc-number">3.14 </span><span>Maintenance</span></h2>
+
+                                                <div class="box infomessage">Will there be any expected ongoing maintenance effort required? Examples: periodic scheduled tasks, taking mandatory version updates on dependencies, additional oncall duties that will be needed, etc.</div>
+                                                <h2 id="HRejecteddesigns"><span class="toc-number">3.15 </span><span>Rejected designs</span></h2>
+
+                                                <h2 id="HOpenquestions"><span class="toc-number">3.16 </span><span>Open questions</span></h2>
+
+                                                <h1 id="HImplementationplan"><span class="toc-number">4 </span><span>Implementation plan</span></h1>
+
+                                                <div class="box infomessage">Detail the high level implementation targets/milestones, with bug tracker issue links and estimates for how much work will be required for each. As this section is fleshed out you may want to break this
+                                                    up in a way that makes sense - for example, you may want to carve the plan up into a sequential series of phases, with each phase containing several parallelizable targets.</div>
+                                                <p>Master issue: <span class="wikilink"><a href="https://issues.amazon.com/issues/CPANEWWIKI-2171" style="white-space:nowrap"><img height="16" src="./res/sim.png" width="16"></a>&nbsp;2741</span></p>
+                                                <table style="width: auto">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="col">&nbsp;SIM&nbsp;</th>
+                                                            <th scope="col">&nbsp;Target&nbsp;</th>
+                                                            <th scope="col">&nbsp;Estimated work (dev-weeks)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="wikilink"><a href="https://issues.amazon.com/issues/CPANEWWIKI-0000" style="white-space:nowrap"><img height="16" src="./res/sim.png" width="16"> </a>1234</span></td>
+                                                            <td>Support Markdown in source editor</td>
+                                                            <td>1</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="wikilink"><a href="https://issues.amazon.com/issues/CPANEWWIKI-0000" style="white-space:nowrap"><img height="16" src="./res/sim.png" width="16"> </a>8475</span></td>
+                                                            <td>Support Markdown in WYSIWYG editor</td>
+                                                            <td>2</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="wikilink"><a href="https://issues.amazon.com/issues/CPANEWWIKI-0000" style="white-space:nowrap"><img height="16" src="./res/sim.png" width="16"> </a>9876</span></td>
+                                                            <td>Test rendering of all supported Markdown syntax</td>
+                                                            <td>1</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="wikilink"><a href="https://issues.amazon.com/issues/CPANEWWIKI-0000" style="white-space:nowrap"><img height="16" src="./res/sim.png" width="16"> </a>5555</span></td>
+                                                            <td>Conduct closed beta and collect feedback</td>
+                                                            <td>1</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h2 id="HDeliverables"><span class="toc-number">4.1 </span><span>Deliverables</span></h2>
+
+                                                <div class="box infomessage">What are the concrete outputs of the completed implementation? List each one here. These are similar to success criteria, but nail down what specifically will be produced by the implementation effort.</div>
+                                                <ul>
+                                                    <li>Code changes to enable Markdown rendering and authoring</li>
+                                                    <li>User documentation for use of Markdown</li>
+                                                </ul>
+                                                <h2 id="HFollowupwork"><span class="toc-number">4.2 </span><span>Followup work</span></h2>
+
+                                                <div class="box infomessage">When appropriate, include some information about what "next steps" may be after the design is implemented. For example, if your design covers the initial implementation of a feature, there may be followup
+                                                    work to implement some additional "power user" functionality which would be detailed in a separate design document.</div>
+                                                <h1 id="HRevisionHistory"><span class="toc-number">5 </span><span>Revision History</span></h1>
+
+                                                <div class="box infomessage">As this document evolves over time, write down any significant changes to the design document that are made. This enables the document's readers to understand how the document has changed.</div>
+                                                <table style="width: auto">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="col">&nbsp;Date&nbsp;</th>
+                                                            <th scope="col">&nbsp;Username&nbsp;</th>
+                                                            <th scope="col">&nbsp;What changed</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;2020-01-01&nbsp;</td>
+                                                            <td>&nbsp;joelthor&nbsp;</td>
+                                                            <td>&nbsp;Added requirements to support non-technical users not having to understand or learn Markdown.</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="clearfloats"></div>
+                                </div>
+
+                                <div id="xdocFooter" class=""><br></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footerglobal">
+            </div>
+
+        </div>
+    </div>
+    <div class="drawer-overlay-upper drawer-toggle"></div>
+</body>
+
+</html>

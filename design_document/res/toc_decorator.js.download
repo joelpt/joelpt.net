@@ -1,0 +1,27 @@
+require(['jquery'], function ($) {
+    function propagateTitlesToHeaders($toc) {
+        $toc.find('a[href^="#"]').each(function (i, e) {
+            const match = $(e).text().match(/^(\d+(\.\d+)*) /);
+            if (!match) {
+                return;
+            }
+
+            const $header = $("[id='" + e.hash.slice(1).replace("'", "\'") + "']");
+            const $firstChild = $header.children().first();
+            if ($firstChild.hasClass('toc-number')) {
+                $firstChild.remove();
+            }
+
+            const numberLabel = match[0];
+            $header.prepend($('<span>', {'class': 'toc-number'}).text(numberLabel));
+        });
+    }
+
+    // Rename headers to match the numbered table-of-contents
+    $('.amazon-wiki-toc-numbered').each(function () {
+        propagateTitlesToHeaders($(this));
+    });
+});
+
+
+

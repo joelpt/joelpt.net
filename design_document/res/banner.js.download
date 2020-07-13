@@ -1,0 +1,185 @@
+require(['jquery'], function($) {
+  // Make an AJAX call to get contents of the banner, if not in print preview mode
+  var xpageParamValue = getUrlVars()["xpage"];
+  var migrationBanner = $("div#migration-banner");
+  var migrationSpinner = $('img#loading-banner');
+  if (xpageParamValue === "print") {
+    return;
+  }
+  else {
+      $.ajax({
+      type: 'get',
+      url: migrationUrl + "?api_token=" + apiToken,
+      cache: false, // Browser caching causes incorrect banner to display
+      success: function(data) {
+        // If a page is found (200 OK response)
+        if (!isNull(data) && data.show_banner === true) {
+          migrationBanner.show();
+          var migrationData = prepareData(data);
+          generateBannerContent(true, migrationData);
+          migrationSpinner.hide();
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        // A status code of 0 means that the migration service could not be reached
+        // We don't always want to show the banner on an error, for example a page
+        // that was never in the Migration Service will return 404 which is a
+        // valid case. 
+        if (jqXHR.status === 0) {
+          migrationBanner.show();
+          generateBannerContent(false, {});
+          migrationSpinner.hide();
+        }
+        
+      }
+    });
+  }
+
+  function prepareData(data) {
+    // Convert JSON to string so that we can parse it
+    var jsonString = JSON.stringify(data);
+    var decodedContent = JSON.parse(jsonString);
+
+    if (isNull(decodedContent.batch) || isNull(decodedContent.batch.flip_date)) {
+      decodedContent['readableDate'] = "";
+    }
+    else {
+      decodedContent['remainingDays'] = calculateRemainingDays(decodedContent.batch.flip_date);
+      decodedContent['readableDate'] = convertReadableFlipDate(decodedContent.batch.flip_date);
+    }
+
+    return decodedContent;
+  }
+
+  function generateBannerContent(ajaxSuccess, migrationData) {
+
+    var bannerText = '';
+
+    var issueLink = '<a href="' + issueURI(migrationData) + '" target="_blank">this troubleshooting guide</a>';
+    var infoLink = '<a href="https://w.amazon.com/index.php/Community/Platform/Applications/Wiki/NewWiki/MigrationPlan" target="_blank">here</a>';
+    
+    if (ajaxSuccess) {
+
+      // If the ajax call succeeded, then we need to use the information received to populate banner text
+      var sourceUrl = migrationData['source_url'];
+      var masterWiki = isNull(migrationData['page']) ? null : migrationData['page']['master'];
+      var migrationStatus = migrationData['migration_status'];
+
+      // Check which wiki is the master for this page
+      masterWiki = isNull(masterWiki) ? 'mediawiki' : masterWiki;
+
+      if (masterWiki === 'xwiki') {
+        // If the page is mastered on XWiki, show banner saying page is now editable with info & TT links
+        var sourceLink = '<a href="' + sourceUrl + '" target="_blank">here</a>';
+        bannerText = getPageFlippedBannerText(issueLink, infoLink, sourceLink);
+      }
+      else if (masterWiki === 'mediawiki') {
+        bannerText = getPagePreFlipBannerText(issueLink, infoLink, migrationData.remainingDays, migrationData.readableDate);
+      }
+    }
+    else {
+      // If the ajax call failed, show users a general error message to allow them to notify us of failure
+      bannerText = 'Migration service could not be found at this time. You can cut us a ticket ' + issueLink + '.';
+    }   
+
+    $("div#migration-banner").html(bannerText);
+  }
+
+  function getPageFlippedBannerText(issueLink, infoLink, sourceLink) {
+    return "This page has now been flipped to the New Wiki.  Click " + sourceLink + " to check the last revision on Legacy Wiki before the page was flipped. "
+            + " If you notice any issues, refer to " + issueLink + " to help you self-fix them. Click "
+            + infoLink + " to learn more about the migration.";
+  }
+
+  function getPagePreFlipBannerText(issueLink, infoLink, remainingDays, displayDate) {
+    return "This page is a <strong>read-only</strong> preview and will be editable " + remainingDaysText(remainingDays, displayDate)
+            + "If you notice any issues, please refer to " + issueLink + " to see a list of known translation issues that you can self-fix once the page is flipped to the New Wiki. Click "
+            + infoLink + " to learn more about the migration.";
+  }
+
+  // If there is no split date, then that means the flipDate was missing and we are in an error state
+  // We still need to show information to the user (preview_url, ticket link, etc), but should not attempt to calculate
+  // with a nil date
+  function convertReadableFlipDate(flipDate) {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var splitDate = flipDate.split('-');
+    return monthNames[splitDate[1] - 1] + ' ' + splitDate[2].substring(0, 2) + ', ' + splitDate[0];
+  }
+
+  function calculateRemainingDays(date) {
+    // need date in format YYYY/MM/DD
+    var splitDate = date.split('-');
+    var formattedDate = splitDate[0] + '/' + splitDate[1] + '/' + splitDate[2].substring(0,2);
+    var migrationDateMs = Date.parse(formattedDate);
+
+    var todayDate = new Date();
+    var todayDateMs = todayDate.getTime();
+
+    var differenceMs = migrationDateMs - todayDateMs;
+    var oneDayMs = 1000 * 60 * 60 * 24;
+    var differenceDays = Math.ceil(differenceMs/oneDayMs);
+
+    return differenceDays;
+  }
+
+  function remainingDaysText(difference, date) {
+    if (!isNull(difference)) {
+      if (difference > 0) {
+        return 'in approximately '
+               + difference + (difference == 1 ? ' day' : ' days')
+               + ' (after ' + date + "). ";
+      }
+      else {
+        return 'within a week. ';
+      }
+    }
+    else {
+      return 'in the near future. ';
+    }
+  }
+
+  function issueURI(migrationData) {
+    var pageData = migrationData['page'];
+    var noPage = isNull(migrationData['source_url']);
+
+    // If the page doesn't exist, there is no batch id
+    // Otherwise, we need to check if it is a page that exists, but is not part of any batch at the time
+    if (isNull(pageData)) {
+      var batchId = 'N/A';
+    }
+    else {
+      var batchId = (isNull(pageData['batch_id']) ? 'N/A' : pageData['batch_id']);
+    }
+
+    var pageTitle = (noPage ? 'N/A' : pageData['name']);
+
+    //Encode the page title so that ampersands and other special characters don't mess up the query parameters
+    pageTitle = encodeURIComponent(pageTitle);
+
+    return "https://w.amazon.com/bin/view/XWiki/MigrationFAQ?page=" + pageTitle + "&batch=" + batchId;
+  }
+
+  // Read a page's GET URL variables and return them as an associative array.
+  function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
+
+
+  function isNull(variable) {
+    return (typeof variable === 'undefined' || variable === null);
+  }
+});
+
+
