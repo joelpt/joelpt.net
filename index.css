@@ -218,9 +218,10 @@ body {
 
 .ext {
     position: relative;
-    transform: skew(0, 30deg) translate3d(0, 0, 0);
+    transform: rotate(30deg);
     transform-origin: top left;
     width: 10000px;
+    z-index: -1;
 }
 
 .header,
