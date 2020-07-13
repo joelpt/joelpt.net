@@ -54,17 +54,21 @@ function handleBandEvents() {
 
     return;
 
-    /* Handle clicks within a band */
-    function onClickBand(e) {
-        const $target = $(e.target);
+    function onClickBand(ev) {
+        const $target = $(ev.target);
         const $band = $target.closest('tr');
 
         const targetBandId = $band.attr('id');
+        focusBand(targetBandId);
+    }
+
+    function focusBand(targetBandId) {
         currentBandId = (currentBandId === targetBandId) ? 'band1' : targetBandId; // re-clicking a band resets the page
 
         $('body').attr('data-active-band', currentBandId);
         $(`.active-band`).removeClass('active-band');
         $(`#${currentBandId}`).addClass('active-band');
+
     }
 }
 
