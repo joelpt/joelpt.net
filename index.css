@@ -3,8 +3,8 @@
 :root {
     --drawer-open-extra-height: 300px;
     --border-space-allowance: 10px;
-    --hover-highlight-speed: 40ms;
-    --drawer-animation-speed: 500ms;
+    --hover-highlight-speed: 80ms;
+    --drawer-animation-speed: 400ms;
     --scheme-switch-speed: 400ms;
     --drawer-magnification-factor: 0.05;
 }
@@ -60,7 +60,6 @@ body {
 
 body:not(.init) {
     transform-origin: top left;
-    margin-top: 50px;
 }
 
 body.init #menu {
