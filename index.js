@@ -85,7 +85,7 @@ function handleSchemeSwitcherEvents() {
 
     $('#left-scheme, #right-scheme').on('click', onClickSchemeSwitcher);
     $('body').on('swipeleft', ev => switchScheme((currentScheme + 1) % TOTAL_COLOR_SCHEMES));
-    $('body').on('swiperight', ev => switchScheme((currentScheme + 1 + TOTAL_COLOR_SCHEMES) % TOTAL_COLOR_SCHEMES));
+    $('body').on('swiperight', ev => switchScheme((currentScheme + TOTAL_COLOR_SCHEMES - 1) % TOTAL_COLOR_SCHEMES));
 
     return;
 

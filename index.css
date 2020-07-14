@@ -171,6 +171,10 @@ body[data-color-scheme=scheme5] #band3 .bullets li:hover {
 
 /* Color scheme application */
 
+#rotator {
+    background-image: linear-gradient(to top, var(--color-5) 22%, var(--color-1) 22%);
+}
+
 body,
 #band1>td,
 #sample-band-1 {
