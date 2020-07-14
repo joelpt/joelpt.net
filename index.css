@@ -1,7 +1,7 @@
 /* Constants */
 
 :root {
-    --drawer-open-extra-height: 300px;
+    --drawer-open-extra-height: 1000px;
     --border-space-allowance: 10px;
     --hover-highlight-speed: 80ms;
     --drawer-animation-speed: 400ms;
@@ -460,18 +460,14 @@ tr.active-band .bullets {
     text-transform: none;
 }
 
-.submenu li::before {
-    content: '- ';
-}
-
 body[data-active-submenu=submenu1] #rotator {
-    transform: translate(-569px, -350px) scale(1.45);
+    transform: translate(-519px, -350px) scale(1.1);
     transition-property: transform;
     transition-duration: var(--drawer-animation-speed);
 }
 
 body[data-active-submenu=submenu2] #rotator {
-    transform: translate(-169px, -550px) scale(1.35);
+    transform: translate(81px, -400px) scale(1.3);
     transition-property: transform;
     transition-duration: var(--drawer-animation-speed);
 }
@@ -489,19 +485,44 @@ body[data-active-submenu=submenu2] #band3 .bullets {
     margin-top: 0px;
     overflow: hidden;
     transition-property: all;
-    transition-duration: calc(0.5 * var(--drawer-animation-speed));
+    transition-duration: calc(var(--drawer-animation-speed));
 }
 
-body[data-active-submenu=submenu1] #submenu1+ul {
-    height: 210px;
-    transform: translateX(820px);
+.active-submenu {
     margin-top: 60px;
     transition-duration: var(--drawer-animation-speed);
 }
 
-body[data-active-submenu=submenu2] #submenu2+ul {
-    height: 210px;
-    transform: translateX(180px);
-    margin-top: 60px;
-    transition-duration: var(--drawer-animation-speed);
+#submenu1.active-submenu {
+    height: 250px;
+    transform: translateX(620px);
+}
+
+#submenu2.active-submenu {
+    height: 350px;
+    /* transform: translateX(100px); */
+}
+
+.submenu footer {
+    font-style: italic;
+    font-size: 70%;
+    padding-top: 0.25em;
+    padding-left: 1em;
+}
+
+#submenu1>li::before {
+    content: '- ';
+}
+
+#submenu2>li>a {
+    font-weight: bold;
+}
+
+#submenu2>li {
+    font-size: 60%;
+    text-align: right;
+}
+
+#band3 .bullets>ul>li+li {
+    padding-top: 0px;
 }

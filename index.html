@@ -27,9 +27,9 @@
 
                         <div class="bullets">
                             <ul>
-                                <li><a href="./resume/index.html">resume</a></li>
-                                <li><a class="submenu-header" id="submenu1">examples</a>
-                                    <ul class="submenu">
+                                <li><a target="_resume" href="./resume/index.html">resume</a></li>
+                                <li><a class="submenu-header" data-submenu="submenu1">examples</a>
+                                    <ul class="submenu" id="submenu1">
                                         <li><a href="./design_document/guide.html">Design process guide</a></li>
                                         <li><a href="./design_document/template.html">Design document template</a></li>
                                         <li><a href="./design_document/guide.html">InterviewMD user manual</a></li>
@@ -45,20 +45,24 @@
 
                         <div class="bullets">
                             <ul>
-                                <li><a class="submenu-header" id="submenu2">chrome extensions</a>
-                                    <ul class="submenu">
-                                        <li><a href="http://sidewise.info">Sidewise: tree-style tab sidebar</a></li>
-                                        <li><a href="http://sidewise.info">Open selected links in new tabs</a></li>
+                                <li><a class="submenu-header" data-submenu="submenu2">chrome extensions</a>
+                                    <ul class="submenu" id="submenu2">
+                                        <li><a href="http://sidewise.info">Sidewise</a><br>
+                                            <footer>Tree-style tab sidebar for Chrome</footer>
+                                        </li>
+                                        <li><a href="http://sidewise.info">Open Selected Links In New Tabs</a>
+                                            <footer>Because you need more open tabs.</footer>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a class="submenu-header" id="submenu3">gaming tools</a>
-                                    <ul class="submenu">
+                                <li><a class="submenu-header" data-submenu="submenu3">gaming tools</a>
+                                    <ul class="submenu" id="submenu3">
                                         <li><a href="./design_document/template.html">Quickfort construction tool for Dwarf Fortress</a></li>
                                         <li><a href="./design_document/guide.html">Bardbot interactive text adventure portal</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="submenu-header" id="submenu3">autohotkey scripts</a>
-                                    <ul class="submenu">
+                                <li><a class="submenu-header" data-submenu="submenu4">autohotkey scripts</a>
+                                    <ul class="submenu" id="submenu4">
                                         <li><a href="./design_document/template.html">Quickfort construction tool for Dwarf Fortress</a></li>
                                         <li><a href="./design_document/guide.html">Bardbot interactive text adventure portal</a></li>
                                         <li><a href="./design_document/template.html">Design Document Template</a></li>

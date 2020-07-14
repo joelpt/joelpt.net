@@ -24,9 +24,6 @@ function initializePage() {
     window.scroll(0, 0);
     setTimeout(() => window.scroll(0, 0), 100);
 
-    // set <a target="_blank"> on all <a>'s
-    $('a').attr('target', '_blank');
-
     // Keep the menu properly sized regardless of device/aspect ratio/dpi
     let menuHeight = $('#menu').height();
     let menuWidth = $('#menu').width();
@@ -89,7 +86,7 @@ function handleSubmenuEvents() {
 
     function onClickSubmenuHeader(ev) {
         const $target = $(ev.target);
-        const submenuId = Number($target.attr('id')[7]);
+        const submenuId = Number($target.attr('data-submenu')[7]);
 
         let currentSubmenuId = $('body').attr('data-active-submenu');
 
@@ -105,7 +102,7 @@ function handleSubmenuEvents() {
 
         $('body').attr('data-active-submenu', `submenu${submenuId}`);
         $(`.active-submenu`).removeClass('active-submenu');
-        $(`#submenu${submenuId} + .submenu `).addClass('active-submenu');
+        $(`#submenu${submenuId}`).addClass('active-submenu');
 
     }
 }
