@@ -6,7 +6,7 @@ const PAGE_ROTATION_EASING = 'swing';
 
 
 const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9;
-const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.65;
+const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.7;
 
 const TOTAL_COLOR_SCHEMES = 5;
 const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
@@ -30,7 +30,7 @@ function initializePage() {
     let menuHeight = $('#menu').height();
     let menuWidth = $('#menu').width();
 
-    $(window).on('resize orientationchange', adjustZoom);
+    $(window).on('resize orientationchange', e => setTimeout(adjustZoom, 10));
 
     // remove the .init class so we actually render everything we want the user to see
     $('body').removeClass('init');
