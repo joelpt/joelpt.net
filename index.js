@@ -5,8 +5,8 @@ const PAGE_ROTATION_ANGLE_SPEED_MULTIPLIER = 2;
 const PAGE_ROTATION_EASING = 'swing';
 
 
-const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.95;
-const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.7;
+const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9;
+const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.65;
 
 const TOTAL_COLOR_SCHEMES = 5;
 const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
@@ -30,6 +30,15 @@ function initializePage() {
     let menuHeight = $('#menu').height();
     let menuWidth = $('#menu').width();
 
+    $(window).on('resize orientationchange', adjustZoom);
+
+    // remove the .init class so we actually render everything we want the user to see
+    $('body').removeClass('init');
+
+    adjustZoom();
+    setTimeout(adjustZoom, 0); // failsafe
+    setTimeout(adjustZoom, 100); // for iOS
+
     function adjustZoom() {
         let optimalZoomBasedOnHeight = SMART_ZOOM_HEIGHT_FILL_PERCENT * window.innerHeight / menuHeight;
         let optimalZoomBasedOnWidth = SMART_ZOOM_WIDTH_FILL_PERCENT * window.innerWidth / menuWidth;
@@ -38,15 +47,6 @@ function initializePage() {
         // both horizontally and vertically regardless of the display's dimensions
         $('#zoomer').css('zoom', Math.min(optimalZoomBasedOnHeight, optimalZoomBasedOnWidth));
     }
-
-    $(window).on('resize', adjustZoom);
-
-    // remove the .init class so we actually render everything we want the user to see
-    $('body').removeClass('init');
-
-    adjustZoom();
-    setTimeout(adjustZoom, 0); // failsafe
-    setTimeout(adjustZoom, 100); // for iOS
 }
 
 /* Set up events to do rotation and resizes when the bands are clicked */
