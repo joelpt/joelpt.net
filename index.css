@@ -32,7 +32,8 @@ a {
 
 html,
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow: visible;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -172,7 +173,7 @@ body[data-color-scheme=scheme5] #band3 .bullets li:hover {
 /* Color scheme application */
 
 #rotator {
-    background-image: linear-gradient(to top, var(--color-5) 22%, var(--color-1) 22%);
+    /* background-image: linear-gradient(to bottom, var(--color-1) 54.9%, var(--color-5) 55%, var(--color-5) 100%); */
 }
 
 body,
