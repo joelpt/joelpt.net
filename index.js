@@ -84,8 +84,10 @@ function handleSchemeSwitcherEvents() {
     let currentScheme = 0;
 
     $('#left-scheme, #right-scheme').on('click', onClickSchemeSwitcher);
-    $('body').on('swipeleft', ev => switchScheme((currentScheme + 1) % TOTAL_COLOR_SCHEMES));
-    $('body').on('swiperight', ev => switchScheme((currentScheme + TOTAL_COLOR_SCHEMES - 1) % TOTAL_COLOR_SCHEMES));
+
+    // Disabled for now: too sensitive and will trigger if user attempts pinch-to-zoom leading to confusing results
+    // $('body').on('swipeleft', ev => switchScheme((currentScheme + 1) % TOTAL_COLOR_SCHEMES));
+    // $('body').on('swiperight', ev => switchScheme((currentScheme + TOTAL_COLOR_SCHEMES - 1) % TOTAL_COLOR_SCHEMES));
 
     return;
 
