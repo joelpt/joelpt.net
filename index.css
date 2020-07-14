@@ -71,8 +71,12 @@ body.init #menu {
     width: 1px;
 }
 
-body.init #menu .header {
+body.init .header {
     padding-left: 0px;
+}
+
+body.init .bullets {
+    display: none;
 }
 
 body.init #band5 {
@@ -292,10 +296,11 @@ body {
 /* Bullet lists */
 
 .bullets {
-    font-size: 55px;
+    display: block;
     max-height: 0;
     overflow: hidden;
-    display: block;
+    font-size: 55px;
+    margin-bottom: 0px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -305,15 +310,15 @@ body {
     }
 }
 
-.bullets ul {
-    margin: 60px 0px;
+.bullets>ul {
+    margin-top: 60px;
 }
 
 .bullets li+li {
     padding-top: 40px;
 }
 
-.bullets li:hover {
+a:hover {
     cursor: pointer;
     text-decoration: underline;
     text-decoration-color: rgba(37, 36, 36, 0.9);
@@ -429,10 +434,74 @@ body[data-active-band=band4] #rotator {
 
 .bullets {
     transition-duration: var(--drawer-animation-speed);
-    transition-property: max-height;
+    transition-property: all;
 }
 
 tr.active-band .bullets {
     max-height: var(--drawer-open-extra-height);
+    margin-bottom: 60px;
+    transition-duration: var(--drawer-animation-speed);
+}
+
+#band2.active-band .bullets {
+    max-height: 600px;
+}
+
+
+/* Submenus */
+
+.submenu ul {
+    margin-top: 30px;
+}
+
+.submenu li {
+    font-size: 70%;
+    text-align: left;
+    text-transform: none;
+}
+
+.submenu li::before {
+    content: '- ';
+}
+
+body[data-active-submenu=submenu1] #rotator {
+    transform: translate(-569px, -350px) scale(1.45);
+    transition-property: transform;
+    transition-duration: var(--drawer-animation-speed);
+}
+
+body[data-active-submenu=submenu2] #rotator {
+    transform: translate(-169px, -550px) scale(1.35);
+    transition-property: transform;
+    transition-duration: var(--drawer-animation-speed);
+}
+
+body[data-active-submenu=submenu1] #band2 .bullets {
+    overflow: visible;
+}
+
+body[data-active-submenu=submenu2] #band3 .bullets {
+    overflow: visible;
+}
+
+.submenu {
+    height: 0;
+    margin-top: 0px;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: calc(0.5 * var(--drawer-animation-speed));
+}
+
+body[data-active-submenu=submenu1] #submenu1+ul {
+    height: 210px;
+    transform: translateX(820px);
+    margin-top: 60px;
+    transition-duration: var(--drawer-animation-speed);
+}
+
+body[data-active-submenu=submenu2] #submenu2+ul {
+    height: 210px;
+    transform: translateX(180px);
+    margin-top: 60px;
     transition-duration: var(--drawer-animation-speed);
 }

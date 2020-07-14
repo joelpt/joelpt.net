@@ -14,6 +14,7 @@ const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
 $(document).ready(() => {
     initializePage();
     handleBandEvents();
+    handleSubmenuEvents();
     handleSchemeSwitcherEvents();
 });
 
@@ -75,6 +76,36 @@ function handleBandEvents() {
         $('body').attr('data-active-band', `band${currentBandId}`);
         $(`.active-band`).removeClass('active-band');
         $(`#band${currentBandId}`).addClass('active-band');
+
+        $('body').attr('data-active-submenu', '');
+    }
+}
+
+/* Set up submenu opening/closing stuff */
+function handleSubmenuEvents() {
+    $('.submenu-header').on('click', onClickSubmenuHeader);
+
+    return;
+
+    function onClickSubmenuHeader(ev) {
+        const $target = $(ev.target);
+        const submenuId = Number($target.attr('id')[7]);
+
+        let currentSubmenuId = $('body').attr('data-active-submenu');
+
+        if (currentSubmenuId !== '') {
+            currentSubmenuId = Number(currentSubmenuId[7]);
+        }
+
+        if (submenuId === currentSubmenuId) {
+            // unexpand submenu
+            $('body').attr('data-active-submenu', '');
+            return;
+        }
+
+        $('body').attr('data-active-submenu', `submenu${submenuId}`);
+        $(`.active-submenu`).removeClass('active-submenu');
+        $(`#submenu${submenuId} + .submenu `).addClass('active-submenu');
 
     }
 }
