@@ -92,7 +92,7 @@ body .header {
 
 /* Color scheme 1 */
 
-body.scheme-1 {
+body[data-color-scheme=scheme1] {
     --color-1: #d97b29;
     --color-2: #f29f05;
     --color-3: #f2dc6b;
@@ -103,7 +103,7 @@ body.scheme-1 {
 
 /* Color scheme 2 */
 
-body.scheme-2 {
+body[data-color-scheme=scheme2] {
     --color-1: #025159;
     --color-2: #03A696;
     --color-3: #F28705;
@@ -111,7 +111,7 @@ body.scheme-2 {
     --color-5: #F20505;
 }
 
-body.scheme-2 tr:not(#band1) .header {
+body[data-color-scheme=scheme2] tr:not(#band1) .header {
     border-bottom: var(--border-space-allowance) solid black;
     padding-bottom: 0px;
 }
@@ -119,7 +119,7 @@ body.scheme-2 tr:not(#band1) .header {
 
 /* Color scheme 3 */
 
-body.scheme-3 {
+body[data-color-scheme=scheme3] {
     --color-1: #D9C58B;
     --color-2: #D9D4CC;
     --color-3: #8C3D0F;
@@ -135,7 +135,7 @@ body.scheme-3 tr:not(#band1) .header {
 
 /* Color scheme 4 */
 
-body.scheme-4 {
+body[data-color-scheme=scheme4] {
     --color-1: darkorange;
     --color-2: white;
     --color-3: turquoise;
@@ -146,7 +146,7 @@ body.scheme-4 {
 
 /* Color scheme 5 */
 
-body.scheme-5 {
+body[data-color-scheme=scheme5] {
     --color-1: darkred;
     --color-2: white;
     --color-3: black;
@@ -154,17 +154,17 @@ body.scheme-5 {
     --color-5: black;
 }
 
-body.scheme-5 #band1,
-body.scheme-5 #band3 {
+body[data-color-scheme=scheme5] #band1,
+body[data-color-scheme=scheme5] #band3 {
     color: white;
 }
 
-body.scheme-5 #menu tr:hover .header-text {
+body[data-color-scheme=scheme5] #menu tr:hover .header-text {
     text-shadow: -4px 0 0 black, -6px 0 0 white, -8px 0 0 white, -10px 0 0 white, -12px 0 0 black;
 }
 
-body.scheme-5 #band1 .bullets li:hover,
-body.scheme-5 #band3 .bullets li:hover {
+body[data-color-scheme=scheme5] #band1 .bullets li:hover,
+body[data-color-scheme=scheme5] #band3 .bullets li:hover {
     text-decoration-color: white;
 }
 
@@ -408,7 +408,7 @@ body[data-active-band=band1] #rotator {
 }
 
 body[data-active-band=band2] #rotator {
-    transform: translate(0px, 0px) scale(calc(1.0 + 1 * var(--drawer-magnification-factor))) rotate(0deg);
+    transform: translate(0px, -125px) scale(calc(1.0 + 1 * var(--drawer-magnification-factor))) rotate(0deg);
 }
 
 body[data-active-band=band3] #rotator {

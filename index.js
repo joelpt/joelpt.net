@@ -51,10 +51,13 @@ function initializePage() {
 
 /* Set up events to do rotation and resizes when the bands are clicked */
 function handleBandEvents() {
-    let currentBandId = 'band1';
+    let currentBandId = 1;
 
     $('#menu tr:not(#band5) td').on('click', onClickBand);
     $('a').on('click', ev => ev.stopPropagation());
+
+    $('body').on('swipeup', ev => focusBand(((currentBandId + 4) % 4) + 1));
+    $('body').on('swipedown', ev => focusBand(((currentBandId + 6) % 4) + 1));
 
     return;
 
@@ -62,31 +65,37 @@ function handleBandEvents() {
         const $target = $(ev.target);
         const $band = $target.closest('tr');
 
-        const targetBandId = $band.attr('id');
+        const targetBandId = Number($band.attr('id')[4]);
         focusBand(targetBandId);
     }
 
     function focusBand(targetBandId) {
-        currentBandId = (currentBandId === targetBandId) ? 'band1' : targetBandId; // re-clicking a band resets the page
+        currentBandId = (currentBandId === targetBandId) ? 1 : targetBandId; // re-clicking a band resets the page
 
-        $('body').attr('data-active-band', currentBandId);
+        $('body').attr('data-active-band', `band${currentBandId}`);
         $(`.active-band`).removeClass('active-band');
-        $(`#${currentBandId}`).addClass('active-band');
+        $(`#band${currentBandId}`).addClass('active-band');
 
     }
 }
 
 /* Set up the color scheme cycler */
 function handleSchemeSwitcherEvents() {
+    let currentScheme = 0;
 
-    let currentScheme = 0,
-        lastScheme;
+    $('#left-scheme, #right-scheme').on('click', onClickSchemeSwitcher);
+    $('body').on('swipeleft', ev => switchScheme((currentScheme + 1) % TOTAL_COLOR_SCHEMES));
+    $('body').on('swiperight', ev => switchScheme((currentScheme + 1 + TOTAL_COLOR_SCHEMES) % TOTAL_COLOR_SCHEMES));
 
-    $('#left-scheme, #right-scheme').on('click', (e) => {
-        lastScheme = currentScheme;
-        const leftRightDelta = ($(e.target).attr('id') === 'right-scheme' ? 1 : TOTAL_COLOR_SCHEMES - 1);
-        currentScheme = (currentScheme + leftRightDelta) % TOTAL_COLOR_SCHEMES;
+    return;
 
-        $('body').removeClass(`scheme-${COLOR_SCHEME_ORDER[lastScheme]}`).addClass(`scheme-${COLOR_SCHEME_ORDER[currentScheme]}`);
-    });
+    function onClickSchemeSwitcher(ev) {
+        const leftRightDelta = ($(ev.target).attr('id') === 'right-scheme' ? 1 : TOTAL_COLOR_SCHEMES - 1);
+        switchScheme((currentScheme + leftRightDelta) % TOTAL_COLOR_SCHEMES);
+    }
+
+    function switchScheme(newScheme) {
+        currentScheme = newScheme;
+        $('body').attr('data-color-scheme', `scheme${currentScheme + 1}`);
+    }
 }
