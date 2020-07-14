@@ -60,6 +60,7 @@ body {
 
 body:not(.init) {
     transform-origin: top left;
+    margin-top: 50px;
 }
 
 body.init #menu {
