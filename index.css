@@ -55,6 +55,10 @@ body {
     overflow: visible;
 }
 
+table {
+    border-collapse: separate;
+}
+
 
 /* Init-time styling (used to calculate scaling factors in JS) */
 
@@ -124,7 +128,7 @@ body.scheme-3 {
 }
 
 body.scheme-3 tr:not(#band1) .header {
-    border-bottom: var(--border-space-allowance) solid transparent;
+    border-bottom: var(--border-space-allowance) solid var(--color-1);
     padding-bottom: 0px;
 }
 
