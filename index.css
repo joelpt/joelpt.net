@@ -450,6 +450,7 @@ body[data-active-band=band3] #rotator {
 
 body[data-active-band=band4] #rotator {
     transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.33);
+    transition-duration: calc(1.75 * var(--drawer-animation-speed));
 }
 
 
