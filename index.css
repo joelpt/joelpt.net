@@ -27,6 +27,15 @@ a {
     color: inherit;
 }
 
+a::before {
+    display: inline-block;
+    content: '>';
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+
+/* 
 a::after {
     background-image: url(res/offsite.svg);
     background-size: 100% 100%;
@@ -39,7 +48,7 @@ a::after {
     padding-top: 0px;
     margin-top: 2px;
     opacity: 0.8;
-}
+} */
 
 
 /* Topmost containers */
