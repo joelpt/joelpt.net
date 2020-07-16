@@ -9,7 +9,6 @@ const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
 $(document).ready(() => {
     initializePage();
     handleBandEvents();
-    handleSubmenuEvents();
     handleSchemeSwitcherEvents();
 });
 
@@ -18,6 +17,9 @@ function initializePage() {
     // reset scroll position, needed due to possible funky cases with rotations/translates
     window.scroll(0, 0);
     setTimeout(() => window.scroll(0, 0), 100);
+
+    // all links to open in new tabs
+    $('a').attr('target', '_blank');
 
     // Keep the menu properly sized regardless of device/aspect ratio/dpi
     let menuHeight = $('#menu').height();
@@ -49,9 +51,6 @@ function handleBandEvents() {
     $('#menu td').on('click', onClickBand);
     $('a').on('click', ev => ev.stopPropagation());
 
-    // $('body').on('swipeup', ev => focusBand(((currentBandId + 4) % 4) + 1));
-    // $('body').on('swipedown', ev => focusBand(((currentBandId + 6) % 4) + 1));
-
     return;
 
     function onClickBand(ev) {
@@ -67,71 +66,17 @@ function handleBandEvents() {
             currentBandId = 1;
         } else if (currentBandId !== targetBandId) {
             currentBandId = targetBandId;
-        } else {
-            const currentSubmenuId = $('body').attr('data-active-submenu');
-            if (currentSubmenuId === '') {
-                currentBandId = 1;
-            }
-
-
         }
-
-        // const currentScrollY = $('#zoomer')[0].scrollTop;
-
-
-        $('body').attr('data-active-submenu', '');
-        $(`.active-submenu`).removeClass('active-submenu');
-
         $('body').attr('data-active-band', `band${currentBandId}`);
         $(`.active-band`).removeClass('active-band');
         $(`#band${currentBandId}`).addClass('active-band');
 
-        // setTimeout(e => {
         $({ y: $('#zoomer')[0].scrollTop }).animate({ y: (currentBandId - 1) * 200 }, {
             duration: SCROLL_ANIMATION_SPEED_MS,
             step: (now, fx) => {
-                // console.log($('.active-band .header-text').offset().top, $('.active-band .header-text').position().top);
                 $('#zoomer')[0].scrollTo(0, now);
             }
         });
-        // }, 0);
-
-        // the band that was focused, scroll it to the top -ish
-        // TODO animate this
-        // $('#zoomer')[0].scrollTo(0, 100);
-
-        // setTimeout(e => {}, 0);
-    }
-}
-
-/* Set up submenu opening/closing stuff */
-function handleSubmenuEvents() {
-    $('.submenu-header').on('click', onClickSubmenuHeader);
-
-    return;
-
-    function onClickSubmenuHeader(ev) {
-        const $target = $(ev.target);
-        const submenuId = Number($target.attr('data-submenu')[7]);
-
-        let currentSubmenuId = $('body').attr('data-active-submenu');
-
-        if (currentSubmenuId !== '') {
-            currentSubmenuId = Number(currentSubmenuId[7]);
-        }
-
-        if (submenuId === currentSubmenuId) {
-            // unexpand submenu
-            $('body').attr('data-active-submenu', '');
-            $(`.active-submenu`).removeClass('active-submenu');
-
-            return;
-        }
-
-        $('body').attr('data-active-submenu', `submenu${submenuId}`);
-        $(`.active-submenu`).removeClass('active-submenu');
-        $(`#submenu${submenuId}`).addClass('active-submenu');
-
     }
 }
 
@@ -140,11 +85,6 @@ function handleSchemeSwitcherEvents() {
     let currentScheme = 0;
 
     $('#left-scheme, #right-scheme').on('click', onClickSchemeSwitcher);
-
-    // Disabled for now: too sensitive and will trigger if user attempts pinch-to-zoom leading to confusing results
-    // $('body').on('swipeleft', ev => switchScheme((currentScheme + 1) % TOTAL_COLOR_SCHEMES));
-    // $('body').on('swiperight', ev => switchScheme((currentScheme + TOTAL_COLOR_SCHEMES - 1) % TOTAL_COLOR_SCHEMES));
-
     return;
 
     function onClickSchemeSwitcher(ev) {

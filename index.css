@@ -454,15 +454,15 @@ body[data-active-band=band1] #rotator {
 }
 
 body[data-active-band=band2] #rotator {
-    transform: translate(-300px, 0px) rotate(0deg) scale(1.25);
+    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.25);
 }
 
 body[data-active-band=band3] #rotator {
-    transform: translate(-300px, 0px) rotate(0deg) scale(1.15);
+    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.15);
 }
 
 body[data-active-band=band4] #rotator {
-    transform: translate(-300px, 0px) rotate(0deg) scale(1.15);
+    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.15);
 }
 
 
@@ -494,25 +494,13 @@ tr.active-band .bullets {
 
 .submenu {
     width: 700px;
-    /* height: 0; */
     margin-top: 30px;
-    /* max-height: 0px; */
     padding-left: 60px;
     margin-left: 20px;
     padding-bottom: 20px;
     overflow: hidden;
     border-left: 1px solid rgba(0, 0, 0, 0.7);
     font-size: 90%;
-    transition-property: all;
-    transition-duration: calc(var(--drawer-animation-speed));
-}
-
-.active-submenu {
-    max-height: 600px;
-    margin-top: 40px;
-    margin-bottom: 60px;
-    padding-top: 30px;
-    transition-duration: var(--drawer-animation-speed);
 }
 
 .submenu footer {
@@ -527,43 +515,5 @@ tr.active-band .bullets {
 }
 
 .bullets li .submenu {
-    /* border-left: 1px solid black; */
-    transition-duration: 100ms;
     padding-left: 30px;
-}
-
-
-/* .bullets li:hover .submenu {
-    border-left: 2px solid black;
-    padding-left: 29px;
-} */
-
-
-/* .active-band .bullets {
-    overflow: visible;
-} */
-
-
-/* Per-submenu specifics */
-
-body[data-active-submenu=submenu1] #rotator {
-    transform: translate(-419px, -350px) scale(1.1);
-    transition-property: transform;
-    transition-duration: var(--drawer-animation-speed);
-}
-
-body[data-active-submenu=submenu2] #rotator {
-    transform: translate(81px, -517px) scale(1.3);
-    transition-property: transform;
-    transition-duration: var(--drawer-animation-speed);
-}
-
-body[data-active-submenu=submenu3] #rotator {
-    transform: translate(-119px, -517px) scale(1.3);
-    transition-property: transform;
-    transition-duration: var(--drawer-animation-speed);
-}
-
-#submenu3.active-submenu {
-    transform: translateX(348px);
 }
