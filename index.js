@@ -1,10 +1,9 @@
-const SCROLL_ANIMATION_SPEED_MS = 600;
-
-const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9;
-const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.7;
-
-const TOTAL_COLOR_SCHEMES = 5;
-const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3];
+const SCROLL_ANIMATION_SPEED_MS = 600; // How quickly we scroll to focus after a band click
+const BAND_SCROLL_Y_INCREMENT_PX = 310; // How much further down the page we scroll for each consecutive band
+const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9; // Rescale the page so it fits within this percent of the screen height
+const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.7; // Rescale the page so it fits within this percent of the screen width
+const TOTAL_COLOR_SCHEMES = 5; // Number of defined color schemes (in the CSS)
+const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3]; // Order of (CSS defined, 1-based) color schemes within the switcher rotation
 
 $(document).ready(() => {
     initializePage();
@@ -12,7 +11,7 @@ $(document).ready(() => {
     handleSchemeSwitcherEvents();
 });
 
-/* Capture measurements of the page, then rescale it (now and onresize) such that it fits nicely on screen */
+
 function initializePage() {
     // reset scroll position, needed due to possible funky cases with rotations/translates
     window.scroll(0, 0);
@@ -44,7 +43,6 @@ function initializePage() {
     }
 }
 
-/* Set up events to do rotation and resizes when the bands are clicked */
 function handleBandEvents() {
     let currentBandId = 1;
 
@@ -71,7 +69,7 @@ function handleBandEvents() {
         $(`.active-band`).removeClass('active-band');
         $(`#band${currentBandId}`).addClass('active-band');
 
-        $({ y: $('#zoomer')[0].scrollTop }).animate({ y: (currentBandId - 1) * 200 }, {
+        $({ y: $('#zoomer')[0].scrollTop }).animate({ y: (currentBandId - 1) * BAND_SCROLL_Y_INCREMENT_PX }, {
             duration: SCROLL_ANIMATION_SPEED_MS,
             step: (now, fx) => {
                 $('#zoomer')[0].scrollTo(0, now);
@@ -80,15 +78,14 @@ function handleBandEvents() {
     }
 }
 
-/* Set up the color scheme cycler */
 function handleSchemeSwitcherEvents() {
     let currentScheme = 0;
 
-    $('#left-scheme, #right-scheme').on('click', onClickSchemeSwitcher);
+    $('#left-scheme, #right-scheme, #scheme-sample-box').on('click', onClickSchemeSwitcher);
     return;
 
     function onClickSchemeSwitcher(ev) {
-        const leftRightDelta = ($(ev.target).attr('id') === 'right-scheme' ? 1 : TOTAL_COLOR_SCHEMES - 1);
+        const leftRightDelta = ($(ev.target).attr('id') === 'left-scheme' ? TOTAL_COLOR_SCHEMES - 1 : 1);
         switchScheme((currentScheme + leftRightDelta) % TOTAL_COLOR_SCHEMES);
     }
 
