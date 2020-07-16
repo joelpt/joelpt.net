@@ -1,9 +1,4 @@
-const BAND_SLIDE_SPEED_MS = 300;
-
-const PAGE_ROTATION_BASE_SPEED_MS = 100;
-const PAGE_ROTATION_ANGLE_SPEED_MULTIPLIER = 2;
-const PAGE_ROTATION_EASING = 'swing';
-
+const SCROLL_ANIMATION_SPEED_MS = 600;
 
 const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9;
 const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.7;
@@ -51,11 +46,11 @@ function initializePage() {
 function handleBandEvents() {
     let currentBandId = 1;
 
-    $('#menu tr:not(#band5) td').on('click', onClickBand);
+    $('#menu td').on('click', onClickBand);
     $('a').on('click', ev => ev.stopPropagation());
 
-    $('body').on('swipeup', ev => focusBand(((currentBandId + 4) % 4) + 1));
-    $('body').on('swipedown', ev => focusBand(((currentBandId + 6) % 4) + 1));
+    // $('body').on('swipeup', ev => focusBand(((currentBandId + 4) % 4) + 1));
+    // $('body').on('swipedown', ev => focusBand(((currentBandId + 6) % 4) + 1));
 
     return;
 
@@ -68,13 +63,44 @@ function handleBandEvents() {
     }
 
     function focusBand(targetBandId) {
-        currentBandId = (currentBandId === targetBandId) ? 1 : targetBandId; // re-clicking a band resets the page
+        if (targetBandId == 5 || targetBandId == 0) {
+            currentBandId = 1;
+        } else if (currentBandId !== targetBandId) {
+            currentBandId = targetBandId;
+        } else {
+            const currentSubmenuId = $('body').attr('data-active-submenu');
+            if (currentSubmenuId === '') {
+                currentBandId = 1;
+            }
+
+
+        }
+
+        // const currentScrollY = $('#zoomer')[0].scrollTop;
+
+
+        $('body').attr('data-active-submenu', '');
+        $(`.active-submenu`).removeClass('active-submenu');
 
         $('body').attr('data-active-band', `band${currentBandId}`);
         $(`.active-band`).removeClass('active-band');
         $(`#band${currentBandId}`).addClass('active-band');
 
-        $('body').attr('data-active-submenu', '');
+        // setTimeout(e => {
+        $({ y: $('#zoomer')[0].scrollTop }).animate({ y: (currentBandId - 1) * 200 }, {
+            duration: SCROLL_ANIMATION_SPEED_MS,
+            step: (now, fx) => {
+                // console.log($('.active-band .header-text').offset().top, $('.active-band .header-text').position().top);
+                $('#zoomer')[0].scrollTo(0, now);
+            }
+        });
+        // }, 0);
+
+        // the band that was focused, scroll it to the top -ish
+        // TODO animate this
+        // $('#zoomer')[0].scrollTo(0, 100);
+
+        // setTimeout(e => {}, 0);
     }
 }
 
@@ -97,6 +123,8 @@ function handleSubmenuEvents() {
         if (submenuId === currentSubmenuId) {
             // unexpand submenu
             $('body').attr('data-active-submenu', '');
+            $(`.active-submenu`).removeClass('active-submenu');
+
             return;
         }
 
