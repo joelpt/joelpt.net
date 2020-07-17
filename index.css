@@ -282,8 +282,7 @@ body.init #band0>td {
 #band0>td {
     height: 2000px;
     position: relative;
-    top: 2px;
-    /* transform: translate(0px, 2px); */
+    top: 3px;
 }
 
 #band1>td {
@@ -441,15 +440,15 @@ body[data-active-band=band1] #rotator {
 }
 
 body[data-active-band=band2] #rotator {
-    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.25);
+    transform: translate(calc(-200px - 10vw), 0px) rotate(0deg) scale(1.25);
 }
 
 body[data-active-band=band3] #rotator {
-    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.05);
+    transform: translate(calc(-200px - 10vw), 0px) rotate(0deg) scale(1.05);
 }
 
 body[data-active-band=band4] #rotator {
-    transform: translate(calc(-350px + 15vw), 0px) rotate(0deg) scale(1.3);
+    transform: translate(calc(-100px - 10vw), 0px) rotate(0deg) scale(1.3);
     transition-duration: calc(2.5 * var(--drawer-animation-speed));
 }
 
@@ -478,7 +477,6 @@ tr.active-band .bullets {
 }
 
 .submenu li {
-    font-size: 70%;
     text-align: left;
     text-transform: none;
 }
@@ -495,7 +493,6 @@ tr.active-band .bullets {
 }
 
 .submenu footer {
-    /* font-style: italic; */
     font-size: 70%;
     padding-top: 10px;
     padding-left: 28px;
