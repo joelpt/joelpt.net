@@ -338,7 +338,7 @@ body.init #band0>td {
 }
 
 #band3 .bullets {
-    transform: translate(309px);
+    transform: translate(344px);
 }
 
 #band4 .bullets {
@@ -526,4 +526,18 @@ tr.active-band .bullets {
 
 .subtitle {
     padding-left: 34px;
+}
+
+#band3,
+#band4,
+#band5 {
+    transform: translateX(0px);
+    transition-duration: var(--drawer-animation-speed);
+    transition-property: transform;
+}
+
+body[data-active-band=band2] #band3,
+body[data-active-band=band2] #band4,
+body[data-active-band=band2] #band5 {
+    transform: translateX(174px);
 }
