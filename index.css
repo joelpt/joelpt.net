@@ -39,6 +39,11 @@ sup {
     transform: translate(0px, -6px);
 }
 
+typewriter {
+    font-family: 'Lucida Console', monospace;
+    font-size: 90%;
+}
+
 
 /* Topmost containers */
 
@@ -112,7 +117,7 @@ body .header {
 }
 
 
-/* Color scheme 1 */
+/* Color scheme 1 "Late Sunrise Over Green Earth" */
 
 body[data-color-scheme=scheme1] {
     --color-1: #d97b29;
@@ -123,7 +128,7 @@ body[data-color-scheme=scheme1] {
 }
 
 
-/* Color scheme 2 */
+/* Color scheme 2 "Hello!" */
 
 body[data-color-scheme=scheme2] {
     --color-1: #025159;
@@ -133,13 +138,15 @@ body[data-color-scheme=scheme2] {
     --color-5: #F20505;
 }
 
-body[data-color-scheme=scheme2] tr:not(#band1) .header {
+body[data-color-scheme=scheme2] #band2 .header,
+body[data-color-scheme=scheme2] #band3 .header,
+body[data-color-scheme=scheme2] #band4 .header {
     border-bottom: var(--border-space-allowance) solid black;
     padding-bottom: 0px;
 }
 
 
-/* Color scheme 3 */
+/* Color scheme 3 "1973" */
 
 body[data-color-scheme=scheme3] {
     --color-1: #D9C58B;
@@ -149,13 +156,15 @@ body[data-color-scheme=scheme3] {
     --color-5: #8C583A;
 }
 
-body.scheme-3 tr:not(#band1) .header {
+body[data-color-scheme=scheme3] #band2 .header,
+body[data-color-scheme=scheme3] #band3 .header,
+body[data-color-scheme=scheme3] #band4 .header {
     border-bottom: var(--border-space-allowance) solid var(--color-1);
     padding-bottom: 0px;
 }
 
 
-/* Color scheme 4 */
+/* Color scheme 4 "Racer" */
 
 body[data-color-scheme=scheme4] {
     --color-1: darkorange;
@@ -166,7 +175,7 @@ body[data-color-scheme=scheme4] {
 }
 
 
-/* Color scheme 5 */
+/* Color scheme 5 "Alert" */
 
 body[data-color-scheme=scheme5] {
     --color-1: darkred;
