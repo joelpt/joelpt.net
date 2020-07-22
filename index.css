@@ -348,13 +348,12 @@ body.init #band0>td {
     overflow: hidden;
     font-size: 55px;
     margin-bottom: 0px;
-    /* transform: translateX(400px); */
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .bullets {
-        font-size: 75px;
+        font-size: 65px;
     }
 }
 
@@ -498,7 +497,7 @@ tr.active-band .bullets {
     padding-bottom: 20px;
     overflow: hidden;
     border-left: 1px solid rgba(0, 0, 0, 0.7);
-    font-size: 70%;
+    font-size: 80%;
 }
 
 .submenu ul {
