@@ -8,12 +8,13 @@ const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3]; // Order of (CSS defined, 1-based) c
 // https://gist.github.com/joepie91/2664c85a744e6bd0629c#gistcomment-2833431
 const delay = ms => new Promise(fn => setTimeout(fn, ms));
 
-$(document).ready(() => {
+$(init);
+
+function init() {
     initializePage();
     handleBandEvents();
     handleSchemeSwitcherEvents();
-});
-
+}
 
 function initializePage() {
     // reset scroll position, needed due to possible funky cases with rotations/translates
@@ -36,8 +37,6 @@ function initializePage() {
     delay(0).then(adjustZoom); // failsafe
     delay(100).then(adjustZoom); // for iOS
 
-    // delay(100).then(alignBullets);
-
     function adjustZoom() {
         let optimalZoomBasedOnHeight = SMART_ZOOM_HEIGHT_FILL_PERCENT * window.innerHeight / menuHeight;
         let optimalZoomBasedOnWidth = SMART_ZOOM_WIDTH_FILL_PERCENT * window.innerWidth / menuWidth;
@@ -47,16 +46,6 @@ function initializePage() {
         $('#zoomer').css('zoom', Math.min(optimalZoomBasedOnHeight, optimalZoomBasedOnWidth));
     }
 }
-
-// function alignBullets() {
-//     const BAND_SCALE_RATIOS = [1, 1.25, 1.05, 1.25, 1];
-
-//     $('.bullets').each((_, e) => {
-//         const shift = -($(e).position().left - $(e).prev('.header-text').position().left);
-//         const ratio = BAND_SCALE_RATIOS[parseInt($(e).closest('tr').attr('id').slice(-1)) - 1];
-//         $(e).css('transform', `translateX(${shift / ratio}px)`);
-//     });
-// }
 
 function handleBandEvents() {
     let currentBandId = 1;

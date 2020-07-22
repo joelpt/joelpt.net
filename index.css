@@ -265,7 +265,8 @@ body {
 }
 
 .header-text {
-    transition: text-shadow var(--hover-highlight-speed);
+    transition-property: all;
+    transition-duration: 600ms;
 }
 
 #menu tr:hover .header-text,
@@ -278,6 +279,13 @@ body {
 #band1.active-band:hover .header-text {
     text-shadow: none;
     cursor: default;
+}
+
+body[data-active-band=band1] #band1 .header-text,
+body[data-active-band=band2] #band2 .header-text,
+body[data-active-band=band3] #band3 .header-text,
+body[data-active-band=band4] #band4 .header-text {
+    transition-duration: 1800ms;
 }
 
 
