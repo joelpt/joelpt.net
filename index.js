@@ -1,4 +1,4 @@
-const SCROLL_ANIMATION_SPEED_MS = 400; // How quickly we scroll to focus after a band click
+const SCROLL_ANIMATION_SPEED_MS = 600; // How quickly we scroll to focus after a band click
 const BAND_SCROLL_Y_INCREMENT_PX = 280; // How much further down the page we scroll for each consecutive band
 const SMART_ZOOM_HEIGHT_FILL_PERCENT = 0.9; // Rescale the page so it fits within this percent of the screen height
 const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.67; // Rescale the page so it fits within this percent of the screen width

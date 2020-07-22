@@ -6,7 +6,6 @@
     --hover-highlight-speed: 80ms;
     --drawer-animation-speed: 600ms;
     --scheme-switch-speed: 400ms;
-    --drawer-magnification-factor: 0.05;
 }
 
 
@@ -306,11 +305,6 @@ body.init #band0>td {
     top: -3px;
 }
 
-
-/* #band2 .bullets {
-    transform: translateX(510px);
-} */
-
 #band3>td {
     top: -4px;
 }
@@ -318,11 +312,6 @@ body.init #band0>td {
 #band4>td {
     top: -5px;
 }
-
-
-/* #band4 .bullets {
-    transform: translateX(200px);
-} */
 
 #band5>td {
     top: -6px;
@@ -360,7 +349,7 @@ body.init #band0>td {
 }
 
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
+    /* For mobile portrait layout */
     .bullets {
         font-size: 65px;
     }
@@ -470,12 +459,11 @@ body[data-active-band=band2] #rotator {
 }
 
 body[data-active-band=band3] #rotator {
-    transform: translate(-300px, 0px) rotate(0deg) scale(1.2);
+    transform: translate(-250px, 0px) rotate(0deg) scale(1.2);
 }
 
 body[data-active-band=band4] #rotator {
     transform: translate(-300px, 0px) rotate(0deg) scale(1.33);
-    transition-duration: calc(3 * var(--drawer-animation-speed));
 }
 
 
@@ -483,7 +471,6 @@ body[data-active-band=band4] #rotator {
 
 .bullets {
     opacity: 0;
-    transition-duration: var(--drawer-animation-speed);
     transition-property: all;
     transition-duration: calc(1.33 * var(--drawer-animation-speed));
 }
@@ -492,7 +479,7 @@ tr.active-band .bullets {
     max-height: var(--drawer-open-extra-height);
     margin-bottom: 120px;
     opacity: 1;
-    transition-duration: calc(1 * var(--drawer-animation-speed));
+    transition-duration: var(--drawer-animation-speed);
 }
 
 
@@ -531,23 +518,4 @@ tr.active-band .bullets {
 
 .subtitle {
     padding-left: 34px;
-}
-
-
-/* Zoomy band titles */
-
-.header-text {
-    display: inline-block;
-    transform: scale(1);
-    transition-property: all;
-    transition-duration: 600ms;
-}
-
-body[data-active-band=band1] #band1 .header-text,
-body[data-active-band=band2] #band2 .header-text,
-body[data-active-band=band3] #band3 .header-text,
-body[data-active-band=band4] #band4 .header-text {
-    transform: scale(1.08);
-    transition-property: all;
-    transition-duration: 1600ms;
 }
