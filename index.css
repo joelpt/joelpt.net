@@ -540,13 +540,14 @@ tr.active-band .bullets {
     display: inline-block;
     transform: scale(1);
     transition-property: all;
-    transition-duration: 1000ms;
+    transition-duration: 600ms;
 }
 
+body[data-active-band=band1] #band1 .header-text,
 body[data-active-band=band2] #band2 .header-text,
 body[data-active-band=band3] #band3 .header-text,
 body[data-active-band=band4] #band4 .header-text {
     transform: scale(1.08);
     transition-property: all;
-    transition-duration: 600ms;
+    transition-duration: 1600ms;
 }
