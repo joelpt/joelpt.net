@@ -109,134 +109,6 @@ body.init2 .bullets {
 }
 
 
-/* Color scheme defaults */
-
-body {
-    --color-text: #181818;
-}
-
-body .header {
-    padding-bottom: var(--border-space-allowance);
-}
-
-
-/* Color scheme 1 "Late Sunrise Over Green Earth" */
-
-body[data-color-scheme=scheme1] {
-    --color-1: #d97b29;
-    --color-2: #f29f05;
-    --color-3: #f2dc6b;
-    --color-4: #7b8c3b;
-    --color-5: #f2f2f2;
-}
-
-
-/* Color scheme 2 "Hello!" */
-
-body[data-color-scheme=scheme2] {
-    --color-1: #025159;
-    --color-2: #03A696;
-    --color-3: #F28705;
-    --color-4: #F25D27;
-    --color-5: #F20505;
-}
-
-body[data-color-scheme=scheme2] #band2 .header,
-body[data-color-scheme=scheme2] #band3 .header,
-body[data-color-scheme=scheme2] #band4 .header {
-    border-bottom: var(--border-space-allowance) solid black;
-    padding-bottom: 0px;
-}
-
-
-/* Color scheme 3 "1973" */
-
-body[data-color-scheme=scheme3] {
-    --color-1: #D9C58B;
-    --color-2: #D9D4CC;
-    --color-3: #8C3D0F;
-    --color-4: #402617;
-    --color-5: #8C583A;
-}
-
-body[data-color-scheme=scheme3] #band2 .header,
-body[data-color-scheme=scheme3] #band3 .header,
-body[data-color-scheme=scheme3] #band4 .header {
-    border-bottom: var(--border-space-allowance) solid var(--color-1);
-    padding-bottom: 0px;
-}
-
-
-/* Color scheme 4 "Racer" */
-
-body[data-color-scheme=scheme4] {
-    --color-1: darkorange;
-    --color-2: white;
-    --color-3: turquoise;
-    --color-4: white;
-    --color-5: darkorange;
-}
-
-
-/* Color scheme 5 "Alert" */
-
-body[data-color-scheme=scheme5] {
-    --color-1: darkred;
-    --color-2: white;
-    --color-3: black;
-    --color-4: white;
-    --color-5: black;
-}
-
-body[data-color-scheme=scheme5] #band1,
-body[data-color-scheme=scheme5] #band3 {
-    color: white;
-}
-
-body[data-color-scheme=scheme5] #menu tr:hover .header-text {
-    text-shadow: -4px 0 0 black, -6px 0 0 white, -8px 0 0 white, -10px 0 0 white, -12px 0 0 black;
-}
-
-body[data-color-scheme=scheme5] #band1 .bullets li:hover,
-body[data-color-scheme=scheme5] #band3 .bullets li:hover {
-    text-decoration-color: white;
-}
-
-
-/* Color scheme application */
-
-#band0>td,
-#band1>td,
-#sample-band-1 {
-    background-color: var(--color-1);
-}
-
-body #band2>td,
-#sample-band-2 {
-    background-color: var(--color-2);
-}
-
-body #band3>td,
-#sample-band-3 {
-    background-color: var(--color-3);
-}
-
-body #band4>td,
-#sample-band-4 {
-    background-color: var(--color-4);
-}
-
-body,
-body #band5>td,
-#sample-band-5 {
-    background-color: var(--color-5);
-}
-
-body {
-    color: var(--color-text);
-}
-
-
 /* Menu and bands */
 
 #menu {
@@ -386,6 +258,58 @@ a:hover {
 }
 
 
+/* Submenus */
+
+.submenu {
+    width: 820px;
+    margin-top: 30px;
+    padding-left: 30px;
+    margin-left: 48px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    border-left: 1px solid rgba(0, 0, 0, 0.7);
+    font-size: 80%;
+}
+
+.submenu ul {
+    margin-top: 30px;
+}
+
+.submenu li {
+    text-align: left;
+    text-transform: none;
+}
+
+.submenu li>a {
+    font-weight: bold;
+}
+
+.submenu>li>footer {
+    font-size: 80%;
+    padding-top: 10px;
+    padding-left: 28px;
+    line-height: 150%;
+}
+
+.subtitle {
+    padding-left: 34px;
+}
+
+#band3,
+#band4,
+#band5 {
+    transform: translateX(0px);
+    transition-duration: var(--band-animation-speed);
+    transition-property: transform;
+}
+
+body[data-active-band=band2] #band3,
+body[data-active-band=band2] #band4,
+body[data-active-band=band2] #band5 {
+    transform: translateX(174px);
+}
+
+
 /* Scheme switcher */
 
 #scheme-switcher {
@@ -506,53 +430,129 @@ tr.active-band .bullets {
 }
 
 
-/* Submenus */
+/* Color scheme defaults */
 
-.submenu {
-    width: 850px;
-    margin-top: 30px;
-    padding-left: 30px;
-    margin-left: 48px;
-    padding-bottom: 20px;
-    overflow: hidden;
-    border-left: 1px solid rgba(0, 0, 0, 0.7);
-    font-size: 80%;
+body {
+    --color-text: #181818;
 }
 
-.submenu ul {
-    margin-top: 30px;
+body .header {
+    padding-bottom: var(--border-space-allowance);
 }
 
-.submenu li {
-    text-align: left;
-    text-transform: none;
+
+/* Color scheme 1 "Late Sunrise Over Green Earth" */
+
+body[data-color-scheme=scheme1] {
+    --color-1: #d97b29;
+    --color-2: #f29f05;
+    --color-3: #f2dc6b;
+    --color-4: #7b8c3b;
+    --color-5: #f2f2f2;
 }
 
-.submenu li>a {
-    font-weight: bold;
+
+/* Color scheme 2 "Hello!" */
+
+body[data-color-scheme=scheme2] {
+    --color-1: #025159;
+    --color-2: #03A696;
+    --color-3: #F28705;
+    --color-4: #F25D27;
+    --color-5: #F20505;
 }
 
-.submenu>li>footer {
-    font-size: 80%;
-    padding-top: 10px;
-    padding-left: 28px;
-    line-height: 150%;
+body[data-color-scheme=scheme2] #band2 .header,
+body[data-color-scheme=scheme2] #band3 .header,
+body[data-color-scheme=scheme2] #band4 .header {
+    border-bottom: var(--border-space-allowance) solid black;
+    padding-bottom: 0px;
 }
 
-.subtitle {
-    padding-left: 34px;
+
+/* Color scheme 3 "1973" */
+
+body[data-color-scheme=scheme3] {
+    --color-1: #D9C58B;
+    --color-2: #D9D4CC;
+    --color-3: #8C3D0F;
+    --color-4: #402617;
+    --color-5: #8C583A;
 }
 
-#band3,
-#band4,
-#band5 {
-    transform: translateX(0px);
-    transition-duration: var(--band-animation-speed);
-    transition-property: transform;
+body[data-color-scheme=scheme3] #band2 .header,
+body[data-color-scheme=scheme3] #band3 .header,
+body[data-color-scheme=scheme3] #band4 .header {
+    border-bottom: var(--border-space-allowance) solid var(--color-1);
+    padding-bottom: 0px;
 }
 
-body[data-active-band=band2] #band3,
-body[data-active-band=band2] #band4,
-body[data-active-band=band2] #band5 {
-    transform: translateX(174px);
+
+/* Color scheme 4 "Racer" */
+
+body[data-color-scheme=scheme4] {
+    --color-1: darkorange;
+    --color-2: white;
+    --color-3: turquoise;
+    --color-4: white;
+    --color-5: darkorange;
+}
+
+
+/* Color scheme 5 "Alert" */
+
+body[data-color-scheme=scheme5] {
+    --color-1: darkred;
+    --color-2: white;
+    --color-3: black;
+    --color-4: white;
+    --color-5: black;
+}
+
+body[data-color-scheme=scheme5] #band1,
+body[data-color-scheme=scheme5] #band3 {
+    color: white;
+}
+
+body[data-color-scheme=scheme5] #menu tr:hover .header-text {
+    text-shadow: -4px 0 0 black, -6px 0 0 white, -8px 0 0 white, -10px 0 0 white, -12px 0 0 black;
+}
+
+body[data-color-scheme=scheme5] #band1 .bullets li:hover,
+body[data-color-scheme=scheme5] #band3 .bullets li:hover {
+    text-decoration-color: white;
+}
+
+
+/* Color scheme application */
+
+#band0>td,
+#band1>td,
+#sample-band-1 {
+    background-color: var(--color-1);
+}
+
+body #band2>td,
+#sample-band-2 {
+    background-color: var(--color-2);
+}
+
+body #band3>td,
+#sample-band-3 {
+    background-color: var(--color-3);
+}
+
+body #band4>td,
+#sample-band-4 {
+    background-color: var(--color-4);
+}
+
+body,
+body #band5>td,
+#sample-band-5 {
+    background-color: var(--color-5);
+}
+
+body {
+    color: var(--color-text);
 }
