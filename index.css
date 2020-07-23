@@ -1,10 +1,9 @@
 /* Constants */
 
 :root {
-    --drawer-open-extra-height: 2500px;
     --border-space-allowance: 10px;
     --hover-highlight-speed: 80ms;
-    --drawer-animation-speed: 600ms;
+    --band-animation-speed: 600ms;
     --scheme-switch-speed: 400ms;
 }
 
@@ -38,7 +37,7 @@ sup {
     transform: translate(0px, -6px);
 }
 
-typewriter {
+code {
     font-family: 'Lucida Console', monospace;
     font-size: 90%;
 }
@@ -102,6 +101,11 @@ body.init .bullets {
 
 body.init #band5 {
     display: none;
+}
+
+body.init2 .bullets {
+    display: block;
+    max-height: inherit;
 }
 
 
@@ -352,7 +356,7 @@ body.init #band0>td {
     display: block;
     max-height: 0;
     overflow: hidden;
-    font-size: 55px;
+    font-size: 45px;
     margin-bottom: 0px;
 }
 
@@ -454,7 +458,7 @@ body,
 
 #rotator {
     transform-origin: 718px 501px;
-    transition-duration: var(--drawer-animation-speed);
+    transition-duration: var(--band-animation-speed);
     transition-property: transform;
 }
 
@@ -475,19 +479,30 @@ body[data-active-band=band4] #rotator {
 }
 
 
-/* Animation: sliding band drawers */
+/* Animation: sliding band opening/closing */
 
 .bullets {
     opacity: 0;
     transition-property: all;
-    transition-duration: calc(1.33 * var(--drawer-animation-speed));
+    transition-duration: calc(1.33 * var(--band-animation-speed));
 }
 
 tr.active-band .bullets {
-    max-height: var(--drawer-open-extra-height);
     margin-bottom: 120px;
     opacity: 1;
-    transition-duration: var(--drawer-animation-speed);
+    transition-duration: var(--band-animation-speed);
+}
+
+#band2.active-band .bullets {
+    max-height: var(--band-2-open-height);
+}
+
+#band3.active-band .bullets {
+    max-height: var(--band-3-open-height);
+}
+
+#band4.active-band .bullets {
+    max-height: var(--band-4-open-height);
 }
 
 
@@ -532,7 +547,7 @@ tr.active-band .bullets {
 #band4,
 #band5 {
     transform: translateX(0px);
-    transition-duration: var(--drawer-animation-speed);
+    transition-duration: var(--band-animation-speed);
     transition-property: transform;
 }
 
