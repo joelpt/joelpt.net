@@ -27,7 +27,7 @@ a {
 
 a::before {
     display: inline-block;
-    content: '>';
+    content: '\00BB';
     padding-right: 10px;
     text-decoration: none;
 }
@@ -293,6 +293,13 @@ a:hover {
 
 .subtitle {
     padding-left: 34px;
+}
+
+.subtitle::after {
+    content: ':';
+    position: relative;
+    top: -0.085em;
+    left: 0.08em;
 }
 
 #band3,
