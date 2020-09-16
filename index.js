@@ -44,7 +44,6 @@ function initializePage() {
 
     $('body').removeClass('init2');
 
-
     // remove the .init class so we actually render everything we want the user to see
     $('body').removeClass('init');
 
@@ -128,10 +127,10 @@ function handleSchemeSwitcherEvents() {
     }
 }
 
-function getCssVar(key) {
-    return $(':root').css(key).trim();
+function getCssVar(key, container = ':root') {
+    return $(container).css(key).trim();
 }
 
-function setCssVar(key, value) {
-    $(':root').css(key, value);
+function setCssVar(key, value, container = ':root') {
+    $(container).css(key, value);
 }
