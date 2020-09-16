@@ -1,7 +1,7 @@
 /* Constants */
 
 :root {
-    --border-space-allowance: 10px;
+    --border-space-allowance: 4px;
     --hover-highlight-speed: 80ms;
     --band-animation-speed: 600ms;
     --scheme-switch-speed: 400ms;
@@ -23,13 +23,6 @@
 a {
     text-decoration: inherit;
     color: inherit;
-}
-
-a::before {
-    display: inline-block;
-    content: '\00BB';
-    padding-right: 10px;
-    text-decoration: none;
 }
 
 sup {
@@ -291,8 +284,16 @@ a:hover {
     line-height: 150%;
 }
 
-.subtitle {
-    padding-left: 34px;
+a::before,
+.subtitle::before {
+    display: inline-block;
+    content: '\00BB';
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+.subtitle::before {
+    opacity: 0;
 }
 
 .subtitle::after {

@@ -1,11 +1,13 @@
 const SMART_ZOOM_HEIGHT_FILL_PERCENT = 1.0; // Rescale the page so it fits within this percent of the screen height
 const SMART_ZOOM_WIDTH_FILL_PERCENT = 0.67; // Rescale the page so it fits within this percent of the screen width
 
-const TOTAL_COLOR_SCHEMES = 5; // Number of defined color schemes (in the CSS)
-const COLOR_SCHEME_ORDER = [1, 5, 2, 4, 3]; // Order of (CSS defined, 1-based) color schemes within the switcher rotation
+const COLOR_SCHEME_ORDER = [2, 5, 1, 4, 3]; // Order of (CSS defined, 1-based) color schemes within the switcher rotation
+const TOTAL_COLOR_SCHEMES = COLOR_SCHEME_ORDER.length; // Number of defined color schemes
 
 const BAND_SCROLL_Y_INCREMENT_PX = 280; // How much further down the page we scroll for each consecutive band
 const SCROLL_ANIMATION_SPEED_MS = 0.65 * getCssVar('--band-animation-speed').slice(0, -2); // How quickly we scroll to focus after a band click
+
+const BAND_HEIGHT_EXTRA_PX = 500; // Ensures we don't cut stuff off due to obscure browser differences
 
 // https://gist.github.com/joepie91/2664c85a744e6bd0629c#gistcomment-2833431
 const delay = ms => new Promise(fn => setTimeout(fn, ms));
@@ -37,7 +39,7 @@ function initializePage() {
 
     $('.bullets').each((_, e) => {
         const $e = $(e);
-        const height = Math.ceil($e.height());
+        const height = Math.ceil($e.height()) + BAND_HEIGHT_EXTRA_PX;
         const bandId = $e.closest('tr').attr('id').slice(-1);
         setCssVar(`--band-${bandId}-open-height`, `${height}px`);
     });
@@ -111,21 +113,23 @@ function handleBandEvents() {
 }
 
 function handleSchemeSwitcherEvents() {
-    let currentScheme = 0;
-
+    let currentSchemeIndex = 0;
+    switchScheme(currentSchemeIndex);
     $('#left-scheme, #right-scheme, #scheme-sample-box').on('click', onClickSchemeSwitcher);
     return;
 
     function onClickSchemeSwitcher(ev) {
         const leftRightDelta = ($(ev.target).attr('id') === 'left-scheme' ? TOTAL_COLOR_SCHEMES - 1 : 1);
-        switchScheme((currentScheme + leftRightDelta) % TOTAL_COLOR_SCHEMES);
+        const newSchemeIndex = (currentSchemeIndex + leftRightDelta) % TOTAL_COLOR_SCHEMES;
+        switchScheme(newSchemeIndex);
     }
 
-    function switchScheme(newScheme) {
-        currentScheme = newScheme;
-        $('body').attr('data-color-scheme', `scheme${currentScheme + 1}`);
+    function switchScheme(newSchemeIndex) {
+        currentSchemeIndex = newSchemeIndex;
+        $('body').attr('data-color-scheme', `scheme${COLOR_SCHEME_ORDER[currentSchemeIndex]}`);
     }
 }
+
 
 function getCssVar(key, container = ':root') {
     return $(container).css(key).trim();
